@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إدارة المنتجات - Darihome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#131f00",
+                        "background": "#fcf9f8",
+                        "surface-variant": "#e4e2e1",
+                        "on-primary-fixed": "#301400",
+                        "tertiary-fixed-dim": "#add461",
+                        "tertiary-fixed": "#c8f17a",
+                        "on-secondary-fixed": "#2c160e",
+                        "inverse-surface": "#303030",
+                        "on-primary-fixed-variant": "#653d1e",
+                        "on-secondary-container": "#795950",
+                        "secondary": "#77574d",
+                        "secondary-fixed": "#ffdbd0",
+                        "surface-dim": "#dcd9d9",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#d5c3b8",
+                        "on-background": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-tint": "#805533",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#f4bb92",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "outline": "#83746b",
+                        "on-secondary-fixed-variant": "#5d4037",
+                        "primary-fixed": "#ffdcc5",
+                        "on-primary-container": "#ffe3d1",
+                        "tertiary-container": "#517201",
+                        "on-tertiary-container": "#cdf67f",
+                        "tertiary": "#3e5800",
+                        "on-surface-variant": "#51443c",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#364e00",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#6f4627",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-container": "#fed3c7",
+                        "inverse-primary": "#f4bb92",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#8b5e3c",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#eae7e7",
+                        "surface-bright": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#e7bdb1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "header-height": "64px",
+                        "sidebar-width": "260px",
+                        "unit": "4px",
+                        "container-padding": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["IBM Plex Sans"],
+                        "headline-sm": ["IBM Plex Sans"],
+                        "label-caps": ["IBM Plex Sans"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["IBM Plex Sans"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["IBM Plex Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Standardizing scrollbar for consistent high-density look */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d5c3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #83746b; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row overflow-hidden">
+<!-- Shared Component: SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-[260px] overflow-y-auto bg-on-secondary-fixed-variant dark:bg-on-tertiary-fixed fixed left-0 rtl:right-0 border-r border-outline-variant rtl:border-l rtl:border-r-0 z-50 transition-colors duration-200 flat no shadows">
+<!-- Header / Brand -->
+<div class="h-header-height flex items-center px-container-padding flex-shrink-0 border-b border-surface-variant/20">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center ms-0 me-3">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">chair</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary-fixed m-0 leading-tight">Darihome</h1>
+<p class="font-label-bold text-label-bold text-surface-variant/70 m-0">Craftsmanship Admin</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 py-4 px-3 flex flex-col gap-1">
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</a>
+<!-- Active Tab: Products -->
+<a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 rounded-lg border-l-4 border-primary bg-primary-container/20 text-on-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-label-bold text-label-bold">Products</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-bold text-label-bold">Categories</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-bold text-label-bold">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-bold text-label-bold">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-bold text-label-bold">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-bold text-label-bold">Custom Requests</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold">Analytics</span>
+</a>
+</nav>
+<!-- Bottom Actions -->
+<div class="p-3 border-t border-surface-variant/20 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-w-0 md:ml-[260px] md:rtl:mr-[260px] md:rtl:ml-0 h-screen overflow-hidden">
+<!-- Shared Component: TopNavBar -->
+<header class="flex justify-between items-center h-header-height px-container-padding sticky top-0 z-40 bg-surface dark:bg-surface-container border-b border-outline-variant flat no shadows">
+<!-- Mobile Menu Toggle & Brand (Visible on Mobile) -->
+<div class="flex items-center gap-4 md:hidden">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md text-primary font-bold">Darihome</span>
+</div>
+<!-- Search Bar (on_left in LTR, so right in RTL) -->
+<div class="hidden md:flex items-center w-96 bg-surface-container-low rounded-full px-4 py-2 border border-outline-variant focus-within:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant me-2">search</span>
+<input class="bg-transparent border-none outline-none w-full font-body-md text-body-md text-on-surface placeholder-on-surface-variant/70 focus:ring-0" placeholder="بحث..." type="text"/>
+</div>
+<div class="flex-1 md:hidden"></div> <!-- Spacer for mobile -->
+<!-- Trailing Icons -->
+<div class="flex items-center gap-2">
+<button aria-label="language" class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button aria-label="notifications" class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors cursor-pointer active:opacity-80 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-2 hover:bg-surface-container-high p-1 pr-3 rounded-full transition-colors cursor-pointer active:opacity-80">
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full object-cover bg-surface-variant border border-outline-variant" data-alt="A small circular profile portrait of a professional administrator in a well-lit office setting. Warm lighting, modern corporate aesthetic. High resolution, 4k." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxQ9o222Uf8hiayFEE_fSM9MwyhwdYP5mVBFvjssITvY1DIR2VNO0Y-q7Y4fUCtk7BqnKhV1rstMNiT_Kx4ywyq6gxVYKN-eYnQZO56DuLisj6x60Fe6ozYIn7OHQmeWfb-WTez5i7Fx68HuW8IJh4rJUBoGT6ke2FEz7roNR4ucsm-bSX_artE6YVsRVd4TzmMF7xkXaehZ8_Tvns5iU5T3V-70xffQ9aZJqLI8HvqgmKgtfHA284Zw"/>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_drop_down</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto bg-background p-container-padding">
+<div class="max-w-[1600px] mx-auto flex flex-col gap-gutter h-full">
+<!-- Page Header Row -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-2">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background m-0">إدارة المنتجات</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">عرض وإدارة كتالوج المنتجات والمخزون الخاص بك.</p>
+</div>
+<button class="bg-primary-container text-on-primary hover:bg-primary-container/90 active:bg-primary-container border border-transparent flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg shadow-sm transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="font-label-bold text-label-bold">إضافة منتج جديد</span>
+</button>
+</div>
+<!-- Filters Row (Bento/Card style container) -->
+<div class="bg-surface border border-outline-variant rounded-xl p-4 shadow-sm flex flex-col lg:flex-row gap-4 items-end">
+<!-- Search Filter -->
+<div class="w-full lg:w-1/3 flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface-variant">البحث</label>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pr-10 pl-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-shadow" placeholder="ابحث باسم المنتج أو رمز SKU..." type="text"/>
+</div>
+</div>
+<!-- Category Filter -->
+<div class="w-full lg:w-1/5 flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface-variant">التصنيف</label>
+<div class="relative w-full">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none appearance-none cursor-pointer">
+<option>جميع التصنيفات</option>
+<option>أثاث</option>
+<option>ديكور</option>
+<option>إضاءة</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Stock Status Filter -->
+<div class="w-full lg:w-1/5 flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface-variant">حالة المخزون</label>
+<div class="relative w-full">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none appearance-none cursor-pointer">
+<option>الكل</option>
+<option>متوفر</option>
+<option>منخفض</option>
+<option>نفذ الكمية</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Publish Status Filter -->
+<div class="w-full lg:w-1/5 flex flex-col gap-1.5">
+<label class="font-label-bold text-label-bold text-on-surface-variant">الحالة</label>
+<div class="relative w-full">
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none appearance-none cursor-pointer">
+<option>الكل</option>
+<option>منشور</option>
+<option>مسودة</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Action buttons -->
+<div class="w-full lg:w-auto flex gap-2 ms-auto mt-4 lg:mt-0">
+<button class="bg-surface hover:bg-surface-container border border-outline-variant text-on-surface-variant flex items-center justify-center p-2 rounded-lg transition-colors" title="إعادة ضبط">
+<span class="material-symbols-outlined">restart_alt</span>
+</button>
+</div>
+</div>
+<!-- Product Table Container -->
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm flex flex-col flex-1 min-h-[400px] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-right border-collapse">
+<thead class="bg-surface-container-low sticky top-0 z-10 border-b border-outline-variant">
+<tr>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap w-[80px]">صورة المنتج</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap min-w-[200px]">اسم المنتج</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">التصنيف</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">السعر</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">المخزون</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">الحالة</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap">آخر تحديث</th>
+<th class="py-3 px-4 font-label-bold text-label-bold text-on-surface-variant whitespace-nowrap text-center">إجراءات</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="py-3 px-4">
+<div class="w-12 h-12 rounded border border-outline-variant overflow-hidden bg-surface-container">
+<img alt="طاولة خشب زيتون" class="w-full h-full object-cover" data-alt="A close-up photograph of a handcrafted olive wood coffee table top, showing rich swirling grain patterns and natural live edges, placed in a bright modern workshop. Studio lighting, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqrqw_sS3cFHmj8qKs5KK2XOitLo5RUjkvAAfR7avd7dvczShAvRZcv803kHlhnW-FdJt4HWd9ROiFG05nqe0LW1ETINQnDEc3NUhLpTaoetGGxokt9GKorQVR-02NFZAdvoNSoXbf66Qj1B-8EnoxHZQptBxo7Kp7JQQHB_Tc54PmFXXRFftCtJofnABCrhN9JWUIivWOKb790ag8mEa0enNYj9kwQKGsWNN7ZNmDCLQLRSmQSP6qAw"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] font-semibold text-on-surface group-hover:text-primary-container transition-colors cursor-pointer">طاولة خشب زيتون</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant/70 font-mono mt-0.5">SKU-OLV-001</span>
+</div>
+</td>
+<td class="py-3 px-4 font-body-md text-body-md text-on-surface-variant">أثاث</td>
+<td class="py-3 px-4 font-headline-sm text-[15px] font-semibold text-on-surface">850 TND</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="font-body-md text-body-md text-on-surface">12</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-tertiary-container/15 border border-tertiary-container/30 text-tertiary-fixed-dim font-label-bold text-[11px]">منشور</span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface-variant">24 مايو 2024</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-2">
+<button class="text-on-surface-variant hover:text-primary-container p-1.5 rounded bg-transparent hover:bg-surface-container-high transition-colors" title="تعديل">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error p-1.5 rounded bg-transparent hover:bg-error-container/30 transition-colors" title="حذف">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group bg-surface-container-lowest/50">
+<td class="py-3 px-4">
+<div class="w-12 h-12 rounded border border-outline-variant overflow-hidden bg-surface-container">
+<img alt="كرسي سفرة حديث" class="w-full h-full object-cover" data-alt="A modern minimalist wooden dining chair made of light ash wood, featuring clean lines and a woven cane seat. Placed against a plain white studio background. Sharp focus, professional product photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxfQ0cZIQ26g3tlRpuSg3t9uBNXaEXx5k0TXlKvDz8y-XkQ64o81wPzXKTEY7B8Mal11Hiqy9YzCLvObaMWpHOOCT8LOA17t8BT6Jw5LI5Jd9acZGBaAqE4AFs9Gg1PKNgyqbmnQxxHiClOgythLFAfLKAWWIo1htDbH0R4ha-d0o0mF0RAlka9s38ofeBskoZJyeS-61dVGfU2TAY2dykYuHVVzz9s4r0mDq1FUUBsjcYG64thzKIQ"/>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] font-semibold text-on-surface group-hover:text-primary-container transition-colors cursor-pointer">كرسي سفرة حديث</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant/70 font-mono mt-0.5">SKU-CHR-042</span>
+</div>
+</td>
+<td class="py-3 px-4 font-body-md text-body-md text-on-surface-variant">أثاث</td>
+<td class="py-3 px-4 font-headline-sm text-[15px] font-semibold text-on-surface">320 TND</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-body-md text-body-md text-on-surface">0</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant text-on-surface-variant font-label-bold text-[11px]">مسودة</span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface-variant">20 مايو 2024</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-2">
+<button class="text-on-surface-variant hover:text-primary-container p-1.5 rounded bg-transparent hover:bg-surface-container-high transition-colors" title="تعديل">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error p-1.5 rounded bg-transparent hover:bg-error-container/30 transition-colors" title="حذف">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="py-3 px-4">
+<div class="w-12 h-12 rounded border border-outline-variant overflow-hidden bg-surface-container flex items-center justify-center text-surface-variant">
+<span class="material-symbols-outlined text-[24px]">image</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-headline-sm text-[15px] font-semibold text-on-surface group-hover:text-primary-container transition-colors cursor-pointer">رف حائط خشبي معلق</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant/70 font-mono mt-0.5">SKU-SHL-011</span>
+</div>
+</td>
+<td class="py-3 px-4 font-body-md text-body-md text-on-surface-variant">ديكور</td>
+<td class="py-3 px-4 font-headline-sm text-[15px] font-semibold text-on-surface">150 TND</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+<span class="font-body-md text-body-md text-on-surface">3</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-tertiary-container/15 border border-tertiary-container/30 text-tertiary-fixed-dim font-label-bold text-[11px]">منشور</span>
+</td>
+<td class="py-3 px-4 font-body-sm text-body-sm text-on-surface-variant">18 مايو 2024</td>
+<td class="py-3 px-4">
+<div class="flex items-center justify-center gap-2">
+<button class="text-on-surface-variant hover:text-primary-container p-1.5 rounded bg-transparent hover:bg-surface-container-high transition-colors" title="تعديل">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error p-1.5 rounded bg-transparent hover:bg-error-container/30 transition-colors" title="حذف">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="mt-auto border-t border-outline-variant bg-surface p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<span class="font-body-sm text-body-sm text-on-surface-variant">عرض 1 إلى 10 من أصل 45 منتج</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded bg-transparent text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary-container text-on-primary font-label-bold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded bg-transparent text-on-surface hover:bg-surface-container-high font-label-bold flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded bg-transparent text-on-surface hover:bg-surface-container-high font-label-bold flex items-center justify-center transition-colors">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-on-surface-variant font-label-bold">...</span>
+<button class="w-8 h-8 rounded bg-transparent text-on-surface hover:bg-surface-container-high font-label-bold flex items-center justify-center transition-colors">5</button>
+<button class="p-1 rounded bg-transparent text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>لوحة التحكم - Darihome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#131f00",
+                        "background": "#fcf9f8",
+                        "surface-variant": "#e4e2e1",
+                        "on-primary-fixed": "#301400",
+                        "tertiary-fixed-dim": "#add461",
+                        "tertiary-fixed": "#c8f17a",
+                        "on-secondary-fixed": "#2c160e",
+                        "inverse-surface": "#303030",
+                        "on-primary-fixed-variant": "#653d1e",
+                        "on-secondary-container": "#795950",
+                        "secondary": "#77574d",
+                        "secondary-fixed": "#ffdbd0",
+                        "surface-dim": "#dcd9d9",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#d5c3b8",
+                        "on-background": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-tint": "#805533",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#f4bb92",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "outline": "#83746b",
+                        "on-secondary-fixed-variant": "#5d4037",
+                        "primary-fixed": "#ffdcc5",
+                        "on-primary-container": "#ffe3d1",
+                        "tertiary-container": "#517201",
+                        "on-tertiary-container": "#cdf67f",
+                        "tertiary": "#3e5800",
+                        "on-surface-variant": "#51443c",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed-variant": "#364e00",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#6f4627",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-container": "#fed3c7",
+                        "inverse-primary": "#f4bb92",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#8b5e3c",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#eae7e7",
+                        "surface-bright": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#e7bdb1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "header-height": "64px",
+                        "sidebar-width": "260px",
+                        "unit": "4px",
+                        "container-padding": "24px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["IBM Plex Sans Arabic"],
+                        "headline-sm": ["IBM Plex Sans Arabic"],
+                        "label-caps": ["IBM Plex Sans Arabic"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["IBM Plex Sans Arabic"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["IBM Plex Sans Arabic"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-container border-b border-outline-variant flex justify-between items-center h-header-height px-container-padding sticky top-0 z-40 rtl:mr-[260px]">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary font-bold">Darihome</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+<input class="pr-10 pl-4 py-2 bg-surface-container-high border-none rounded-full text-body-sm font-body-sm focus:ring-2 focus:ring-primary w-64 text-on-surface transition-all" placeholder="بحث..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined hover:bg-surface-container-high transition-colors p-2 rounded-full">language</span>
+<span class="material-symbols-outlined hover:bg-surface-container-high transition-colors p-2 rounded-full relative">
+                    notifications
+                    <span class="absolute top-1 right-2 w-2 h-2 bg-error rounded-full"></span>
+</span>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-bold">AM</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-on-secondary-fixed-variant dark:bg-on-tertiary-fixed fixed sidebar-width h-full rtl:right-0 top-0 border-l border-outline-variant rtl:border-r-0 z-50 flex flex-col overflow-y-auto">
+<div class="p-6 border-b border-outline-variant/20">
+<h1 class="font-headline-md text-headline-md text-primary-fixed">Darihome</h1>
+<p class="font-label-bold text-label-bold text-primary-fixed-dim mt-1">Craftsmanship Admin</p>
+</div>
+<ul class="flex flex-col py-4 w-full">
+<li>
+<a class="flex items-center gap-3 px-6 py-3 border-r-4 border-primary bg-primary-container/20 text-on-primary-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-bold text-label-bold">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-bold text-label-bold">Products</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-bold text-label-bold">Categories</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-bold text-label-bold">Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-bold text-label-bold">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-bold text-label-bold">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">handyman</span>
+<span class="font-label-bold text-label-bold">Custom Requests</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-6 py-3 text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 mt-8" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-bold text-label-bold">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="rtl:mr-[260px] p-container-padding max-w-[1600px] mx-auto">
+<div class="mb-8">
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-2">مرحبًا بك في Darihome</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">نظرة عامة على أداء المتجر والمبيعات</p>
+</div>
+<!-- KPI Summary Section (Bento Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-gutter mb-8">
+<div class="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-outline transition-colors group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-container/10 p-2 rounded-lg">shopping_bag</span>
+<span class="text-tertiary font-label-bold text-label-bold flex items-center gap-1">+12% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+<h3 class="font-body-sm text-body-sm text-on-surface-variant mt-2">إجمالي الطلبات</h3>
+<p class="font-headline-sm text-headline-sm text-on-surface font-bold">1,245</p>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-outline transition-colors group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary bg-secondary-container/30 p-2 rounded-lg">new_releases</span>
+<span class="text-tertiary font-label-bold text-label-bold flex items-center gap-1">+5% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+<h3 class="font-body-sm text-body-sm text-on-surface-variant mt-2">طلبات جديدة</h3>
+<p class="font-headline-sm text-headline-sm text-on-surface font-bold">34</p>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-outline transition-colors group xl:col-span-2">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-container/10 p-2 rounded-lg">payments</span>
+<span class="text-tertiary font-label-bold text-label-bold flex items-center gap-1">+24% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+<h3 class="font-body-sm text-body-sm text-on-surface-variant mt-2">إجمالي المبيعات (TND)</h3>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">45,890.00</p>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-outline transition-colors group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-container/10 p-2 rounded-lg">inventory</span>
+</div>
+<h3 class="font-body-sm text-body-sm text-on-surface-variant mt-2">المنتجات المتوفرة</h3>
+<p class="font-headline-sm text-headline-sm text-on-surface font-bold">856</p>
+</div>
+<div class="bg-error-container/20 border border-error/20 rounded-xl p-4 flex flex-col gap-2 hover:border-error/40 transition-colors group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-error bg-error-container/50 p-2 rounded-lg">warning</span>
+</div>
+<h3 class="font-body-sm text-body-sm text-error mt-2">المنتجات منخفضة المخزون</h3>
+<p class="font-headline-sm text-headline-sm text-error font-bold">12</p>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-4 flex flex-col gap-2 hover:border-outline transition-colors group">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary bg-primary-container/10 p-2 rounded-lg">group</span>
+<span class="text-tertiary font-label-bold text-label-bold flex items-center gap-1">+8% <span class="material-symbols-outlined text-sm">trending_up</span></span>
+</div>
+<h3 class="font-body-sm text-body-sm text-on-surface-variant mt-2">عدد العملاء</h3>
+<p class="font-headline-sm text-headline-sm text-on-surface font-bold">3,402</p>
+</div>
+</div>
+<!-- Analytics Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-8">
+<div class="lg:col-span-2 bg-surface border border-outline-variant rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-sm text-headline-sm text-on-background">مبيعات الفترة</h2>
+<select class="bg-surface-container-high border-none rounded-lg text-body-sm py-1 px-3 focus:ring-1 focus:ring-primary text-on-surface">
+<option>آخر 30 يوم</option>
+<option>هذا العام</option>
+</select>
+</div>
+<div class="h-64 w-full">
+<canvas id="salesChart"></canvas>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-background mb-6">الطلبات حسب الفئة</h2>
+<div class="h-64 w-full flex items-center justify-center">
+<canvas id="categoryChart"></canvas>
+</div>
+</div>
+</div>
+<!-- Recent Orders Table -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h2 class="font-headline-sm text-headline-sm text-on-background">جدول الطلبات الأخيرة</h2>
+<button class="text-primary font-label-bold text-label-bold flex items-center gap-1 hover:underline">
+                    عرض الكل
+                    <span class="material-symbols-outlined text-sm rtl:rotate-180">arrow_forward</span>
+</button>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-right rtl:text-right">
+<thead class="bg-surface-container-lowest border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant w-24">رقم الطلب</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant">العميل</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant">التاريخ</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant">الإجمالي</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant">حالة الدفع</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant">حالة الطلب</th>
+<th class="px-6 py-4 font-label-bold text-label-bold text-on-surface-variant text-center">إجراءات</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#1024</td>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center text-xs font-bold">A</div>
+                                Ahmed Mansour
+                            </td>
+<td class="px-6 py-4 text-on-surface-variant">2023-10-25</td>
+<td class="px-6 py-4 font-bold">450 TND</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-tertiary-container/10 text-tertiary">
+                                    مدفوع
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-[#FF9800]/10 text-[#E65100]">
+                                    قيد المعالجة
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#1023</td>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center text-xs font-bold">F</div>
+                                Fatima Ali
+                            </td>
+<td class="px-6 py-4 text-on-surface-variant">2023-10-24</td>
+<td class="px-6 py-4 font-bold">1,200 TND</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-tertiary-container/10 text-tertiary">
+                                    مدفوع
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-tertiary-container/10 text-tertiary">
+                                    مكتمل
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="px-6 py-4 font-bold text-primary">#1022</td>
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center text-xs font-bold">S</div>
+                                Sami Trabelsi
+                            </td>
+<td class="px-6 py-4 text-on-surface-variant">2023-10-24</td>
+<td class="px-6 py-4 font-bold">350 TND</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-error-container/20 text-error">
+                                    غير مدفوع
+                                </span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-bold bg-[#2196F3]/10 text-[#0D47A1]">
+                                    جديد
+                                </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<script>
+        // Chart.js Configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sales Line Chart
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            new Chart(salesCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'المبيعات (TND)',
+                        data: [12000, 19000, 15000, 25000, 22000, 30000, 45890],
+                        borderColor: '#8b5e3c', // primary-container
+                        backgroundColor: 'rgba(139, 94, 60, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#8b5e3c',
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#303030', // inverse-surface
+                            titleFont: { family: 'IBM Plex Sans Arabic' },
+                            bodyFont: { family: 'Inter' },
+                            rtl: true
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 12 } } },
+                        y: { 
+                            grid: { color: '#e4e2e1', borderDash: [5, 5] }, // surface-variant
+                            ticks: { font: { family: 'Inter', size: 12 } },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Category Bar Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            new Chart(categoryCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['كراسي', 'طاولات', 'أرائك', 'ديكور'],
+                    datasets: [{
+                        label: 'الطلبات',
+                        data: [65, 45, 30, 85],
+                        backgroundColor: [
+                            '#8b5e3c', // primary-container
+                            '#77574d', // secondary
+                            '#517201', // tertiary-container
+                            '#f4bb92'  // primary-fixed-dim
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#303030',
+                            titleFont: { family: 'IBM Plex Sans Arabic' },
+                            bodyFont: { family: 'Inter' },
+                            rtl: true
+                        }
+                    },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { font: { family: 'IBM Plex Sans Arabic', size: 12 } } },
+                        y: { 
+                            grid: { color: '#e4e2e1', borderDash: [5, 5] },
+                            ticks: { font: { family: 'Inter', size: 12 } },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body></html>

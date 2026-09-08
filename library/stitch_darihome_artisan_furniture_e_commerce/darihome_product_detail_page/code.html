@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Handcrafted Oak Stool - Darihome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#2c160e",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#2f312e",
+                        "on-surface": "#111d23",
+                        "surface-container-low": "#e9f6fd",
+                        "outline-variant": "#d4c3be",
+                        "surface-variant": "#d7e4ec",
+                        "inverse-primary": "#e7bdb1",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f4faff",
+                        "surface-container-highest": "#d7e4ec",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#b5b5b2",
+                        "on-surface-variant": "#504441",
+                        "on-secondary-container": "#6b6360",
+                        "secondary-fixed": "#ece0dc",
+                        "primary-fixed-dim": "#e7bdb1",
+                        "surface": "#f4faff",
+                        "tertiary-fixed": "#e2e3df",
+                        "primary-container": "#5d4037",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c7c3",
+                        "on-secondary-fixed": "#201a18",
+                        "outline": "#827470",
+                        "on-primary-container": "#d4ada1",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#454745",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#ece0dc",
+                        "primary-fixed": "#ffdbd0",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#263238",
+                        "on-primary-fixed-variant": "#5d4037",
+                        "surface-dim": "#cfdce4",
+                        "on-tertiary-fixed": "#1a1c1a",
+                        "primary": "#442a22",
+                        "inverse-on-surface": "#e6f3fb",
+                        "on-tertiary-fixed-variant": "#454745",
+                        "surface-tint": "#77574d",
+                        "secondary-fixed-dim": "#cfc4c0",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f4faff",
+                        "secondary": "#655d5a",
+                        "surface-container-high": "#ddeaf2",
+                        "on-background": "#111d23",
+                        "surface-container": "#e3f0f8",
+                        "on-secondary-fixed-variant": "#4c4542"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["60px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 sticky z-50 transition-shadow duration-300 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-desktop py-unit max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed-dim flex-shrink-0" href="#">
+                Darihome
+            </a>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim border-b border-primary dark:border-primary-fixed-dim pb-1 opacity-80 transition-opacity duration-200" href="#">Shop</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Categories</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim">
+<button aria-label="Search" class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="Favorites" class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="Account" class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="Cart" class="hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Breadcrumbs -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<nav aria-label="Breadcrumb" class="flex text-on-surface-variant font-label-sm text-label-sm">
+<ol class="inline-flex items-center space-x-1 md:space-x-3">
+<li class="inline-flex items-center">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined mx-1 text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Shop</a>
+</div>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined mx-1 text-sm">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Stools</a>
+</div>
+</li>
+<li aria-current="page">
+<div class="flex items-center">
+<span class="material-symbols-outlined mx-1 text-sm">chevron_right</span>
+<span class="text-primary font-semibold">Handcrafted Oak Stool</span>
+</div>
+</li>
+</ol>
+</nav>
+</div>
+<!-- Product Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-20">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Gallery -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="w-full aspect-square bg-surface-container-low rounded-lg overflow-hidden group relative">
+<img alt="Handcrafted Oak Stool - Main View" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A large, high-resolution product photography shot of a handcrafted solid oak stool, set against a pristine, soft cream studio background. The minimalist lighting casts gentle, ambient shadows that highlight the stool's smooth natural oil finish and precise wood grain, emphasizing its premium, Scandinavian modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2JiU5SanNXX6bgD3jDx54XA8SK7f3XP9ERlvKjUC1KkSVDrg9Ob-yaxzaapSGwk4dq8EbzXpGberGWsnwvK973spHuMENvnFnCApX5uuqqEEy6nhEW-5PmUz7OW4o7mjls3QJFZCtaHo-2AlCkRnHI0u62t0soD0ChcAvSaP4m23KgcWh9sgSWt8qqNaskk3sYhnTmT22mgkClB3INek_gX6-m4yo9rem1oIWLVln9hr7rKoBMdZFuA"/>
+</div>
+<div class="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
+<button class="w-24 h-24 flex-shrink-0 rounded bg-surface-container-low overflow-hidden border-2 border-primary">
+<img alt="Detail view 1" class="w-full h-full object-cover" data-alt="Close-up detailed product shot of a handcrafted solid oak stool leg joint, demonstrating precision craftsmanship. The lighting is soft and directional, highlighting the rich texture and natural oil finish of the wood against a minimal cream background, maintaining the high-end modern minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4HfOH3luwBeknNP06NL05PLSnPFQWeCI3wsyTRbu5sMHTTOnIWZsWilfKmeEg0OXxbW1r-y1yWVhJDrIxFgmoJFrvcZ-cm7h8AOJSINqfaSBu-8kJnduCr18srZa3a2oxSVnvfoqvzI1u6SrfRbnua2Qv15MtAqFWl46Y4uLD9Q71MWanHuC5b5riJVZ9dk7bz4XldcuAZ4HAwwvpOcB49oVP4QmyO05FXi3SOOE1u5cdm7Blrhq6Pg"/>
+</button>
+<button class="w-24 h-24 flex-shrink-0 rounded bg-surface-container-low overflow-hidden border-2 border-transparent hover:border-outline-variant transition-colors">
+<img alt="Top view" class="w-full h-full object-cover" data-alt="Top-down view of a handcrafted solid oak stool seat, focusing on the beautiful wood grain pattern. Photographed in a bright, modern studio setting with soft natural light that complements the warm, natural oil finish and minimalist design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqTD8ltSJhglWmDVTjp34o9rc45Ok236JLVbNBHJdY2z5QWschdooaQT6nwbwi1lnWy9HbgQ7_y8iRnZ1hCryZGIANG-W83opc1_98PmlFtd4767Yv8lYVNYArMlawh7ZmWSZftfjsDEYtwoDMQ2bvUQxzwerWXbETPqorqw-x-fezeIQjxclo6uyEQXEMiEQ6qoUCauDrqPa5krenF-gwYpSW79BsBomg6Mpm0ddjNnzeiOIsDJRd0w"/>
+</button>
+<button class="w-24 h-24 flex-shrink-0 rounded bg-surface-container-low overflow-hidden border-2 border-transparent hover:border-outline-variant transition-colors">
+<img alt="Lifestyle view" class="w-full h-full object-cover" data-alt="Lifestyle shot of a handcrafted solid oak stool placed in a minimalist, airy living space with Scandinavian design elements. Soft, diffused daylight highlights the stool's natural oil finish, showcasing its functional elegance and premium tactile quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4O2lGs-5lj1U0DuBD9p7d1V0IX1sI4xcuE4CP4ZKHP4ydbfdUwLs9K0wES1YoS-bk6Ff12Nj6U6uhqgX37Ei932pNvY0jDkyzr9qsgVsbvJzE-Pg31NEc_p0UpVmTMsvdcvM1FgiW-UBeyrIY63d7LXpopUo3-zNB_UQX0NNbNug6h5nARoQKZZNTRkfhis2kBnH6eTX7zwWOJZpdFSvSEzDqAlhkBgHTtO6UqE_3z_XYrtz1iuk63w"/>
+</button>
+</div>
+</div>
+<!-- Product Info -->
+<div class="lg:col-span-5 flex flex-col pt-4 lg:pt-0 lg:pl-8">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Handcrafted Oak Stool</h1>
+<p class="font-headline-md text-headline-md text-primary mb-6">$180.00</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                        Embodying the essence of slow living and functional minimalism, this stool is meticulously carved from solid European oak. Its smooth curves and natural oil finish celebrate the raw beauty of wood, providing a versatile piece that serves as an extra seat, a side table, or a quiet statement in any room.
+                    </p>
+<div class="space-y-6 mb-10">
+<!-- Finishes -->
+<div>
+<span class="font-label-sm text-label-sm text-on-surface block mb-3 uppercase tracking-wider">Wood Finish</span>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded border border-primary bg-primary-fixed-dim text-primary font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">Light Oak</button>
+<button class="px-6 py-3 rounded border border-outline-variant bg-surface text-on-surface-variant font-label-sm text-label-sm hover:border-primary transition-colors">Dark Walnut</button>
+</div>
+</div>
+<!-- Quantity -->
+<div>
+<span class="font-label-sm text-label-sm text-on-surface block mb-3 uppercase tracking-wider">Quantity</span>
+<div class="flex items-center border border-outline-variant rounded w-32 h-12">
+<button aria-label="Decrease quantity" class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<input aria-label="Quantity" class="w-12 h-full text-center font-body-md text-body-md border-none focus:ring-0 bg-transparent p-0" min="1" type="number" value="1"/>
+<button aria-label="Increase quantity" class="w-10 h-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-4 mb-12">
+<button class="flex-grow bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest py-4 px-8 rounded hover:bg-primary-container transition-colors shadow-sm flex items-center justify-center gap-2">
+                            Add to Cart
+                        </button>
+<button aria-label="Add to Wishlist" class="sm:w-16 h-14 sm:h-auto flex items-center justify-center border border-outline-variant rounded text-on-surface-variant hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<!-- Accordion Details -->
+<div class="border-t border-surface-variant">
+<details class="group py-4 border-b border-surface-variant cursor-pointer" open="">
+<summary class="flex justify-between items-center font-label-sm text-label-sm text-on-surface uppercase tracking-wider list-none">
+                                Specifications
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-on-surface-variant space-y-2">
+<p><strong class="text-on-surface font-semibold">Material:</strong> Solid European Oak</p>
+<p><strong class="text-on-surface font-semibold">Dimensions:</strong> 45cm H x 30cm W</p>
+<p><strong class="text-on-surface font-semibold">Finish:</strong> Natural Oil</p>
+</div>
+</details>
+<details class="group py-4 border-b border-surface-variant cursor-pointer">
+<summary class="flex justify-between items-center font-label-sm text-label-sm text-on-surface uppercase tracking-wider list-none">
+                                Product Details &amp; Craftsmanship
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-on-surface-variant">
+<p>Each stool is individually crafted by master artisans in our European workshops. The joinery relies on traditional techniques, avoiding metal hardware wherever possible to ensure a seamless aesthetic. The natural oil finish is applied by hand, deeply nourishing the wood while leaving a tactile, matte surface that will patina beautifully over time.</p>
+</div>
+</details>
+<details class="group py-4 border-b border-surface-variant cursor-pointer">
+<summary class="flex justify-between items-center font-label-sm text-label-sm text-on-surface uppercase tracking-wider list-none">
+                                Delivery &amp; Returns
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 font-body-md text-body-md text-on-surface-variant">
+<p>Ships within 3-5 business days in plastic-free, recyclable packaging designed specifically to protect solid wood during transit. 30-day return policy for unused items in original packaging.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</section>
+<!-- Related Products (Bento/Asymmetric style) -->
+<section class="bg-surface-container-low py-20">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-10 text-center">Complementary Pieces</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Featured Related (Large) -->
+<a class="md:col-span-2 group block relative overflow-hidden rounded-lg bg-surface h-[400px]" href="#">
+<img alt="Oak Side Table" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully styled scene featuring a minimalist solid oak side table, perfectly complementing the aesthetic of the handcrafted stool. Shot in a bright, modern studio space with soft natural lighting, emphasizing the tactile quality and premium finish of the slow-living furniture collection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqScYOUkXqlOJG-oMeks25FySISoVgYpLAXmtRcErlZv6RwmtP3qF-Eo-oBFa_PcNVE8CfrOWGW5Fa17icvF5TGQ9F6SJkwdyWm3cMqY8p_SK-mRVw96w5VWW3W9fhHlyN3nBUYryhnlfvNRGVUDehETzUEHKIS62VfOUkq8VAdKZBQYnu21vdKwPNKF2sp_arbhZXo9ekcQkIvLF8jWt5N0oljXdNhrdcnouLRRPoRoD8JPm-ofWhzA"/>
+<div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-surface/90 to-transparent w-full">
+<h3 class="font-body-lg text-body-lg text-on-surface font-semibold">Oak Side Table</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">$240.00</p>
+</div>
+</a>
+<div class="flex flex-col gap-6 h-[400px]">
+<!-- Related Item 2 -->
+<a class="flex-1 group block relative overflow-hidden rounded-lg bg-surface" href="#">
+<img alt="Floating Oak Shelf" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A detailed product shot of a minimalist wooden floating shelf made of solid oak. Set against a clean cream wall in a bright studio environment, reflecting the high-end modern minimalist and tactile design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9yfDO5WPIUrBFW_dE3hj6Xgtloc2CubVaWa8yrRL2fbcRrsrU3E7uR0B_YY5iJK1FWEBiaXK2kbOdZb_PwrZ0LtTEAS8TSV2jHgz3pQBMa6pIkDV4bxv9vmezNBmqvsxkAVlBVTt0IuWR0qL_Ld7HHKqqibJDPptXUTRdHJLZv7xoF0GRCJ0Ij5nna66--NvybdRvE7XmHpxSpzIKYFXbrD3klh2-YB_tY2nzKOSSLDynoPNyFQhLvQ"/>
+<div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-surface/90 to-transparent w-full">
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Floating Shelf</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">$120.00</p>
+</div>
+</a>
+<!-- Related Item 3 -->
+<a class="flex-1 group block relative overflow-hidden rounded-lg bg-surface" href="#">
+<img alt="Hand-carved Bowl" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A small, hand-carved wooden bowl sitting elegantly on a simple surface, bathed in soft, natural light. The minimalist presentation highlights the craftsmanship and natural oil finish, aligning perfectly with the serene, tactile brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Dv99OQ6nD6MCwPGR6H5EppmsKWnDD_cNdBOQPMMSF5j0h0V3z-w9faUKwTGrklZKpA_rg-EtDktiLwp5uGc32lt7qYsJpl34dUv1_E5HeCC0jK0lcspSqM1_6LMgIFZqhUpkfVxihXqNLygeetDOIhrww-JnctO2NijALoIOrJmdy7dNTchvfLDgaFoCo07yG8sM-ECepz_1cweUQOF9CVRcXm-b1VlgTKsCmPpXsiWQYcerrPJ7yA"/>
+<div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-surface/90 to-transparent w-full">
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Carved Bowl</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">$65.00</p>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-tertiary-container full-width rounded-t-none border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-lg text-headline-lg text-primary dark:text-on-primary-container block mb-4">Darihome</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant">
+                    © 2024 Darihome. Handcrafted with precision and care.
+                </p>
+</div>
+<div class="col-span-1 md:col-span-3 grid grid-cols-2 sm:grid-cols-4 gap-8 pt-4 md:pt-0">
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-semibold uppercase tracking-wider mb-2">Shop</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">All Products</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">Furniture</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">Accessories</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-semibold uppercase tracking-wider mb-2">Service</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">FAQ</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">Shipping &amp; Returns</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">Care Guide</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-semibold uppercase tracking-wider mb-2">Contact</h4>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">Get in Touch</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline Transition-all duration-300 ease-in-out" href="#">Stores</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-semibold uppercase tracking-wider mb-2">Newsletter</h4>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant mb-2">Subscribe for updates on slow living.</p>
+<div class="flex border-b border-on-surface-variant pb-1">
+<input class="bg-transparent border-none focus:ring-0 p-0 text-body-md font-body-md text-on-surface w-full placeholder-on-surface-variant/50" placeholder="Email address" type="email"/>
+<button aria-label="Subscribe" class="text-primary hover:text-primary-container">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

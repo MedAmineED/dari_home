@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Darihome - Handcrafted for Your Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#2c160e",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#2f312e",
+                        "on-surface": "#111d23",
+                        "surface-container-low": "#e9f6fd",
+                        "outline-variant": "#d4c3be",
+                        "surface-variant": "#d7e4ec",
+                        "inverse-primary": "#e7bdb1",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f4faff",
+                        "surface-container-highest": "#d7e4ec",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#b5b5b2",
+                        "on-surface-variant": "#504441",
+                        "on-secondary-container": "#6b6360",
+                        "secondary-fixed": "#ece0dc",
+                        "primary-fixed-dim": "#e7bdb1",
+                        "surface": "#f4faff",
+                        "tertiary-fixed": "#e2e3df",
+                        "primary-container": "#5d4037",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c7c3",
+                        "on-secondary-fixed": "#201a18",
+                        "outline": "#827470",
+                        "on-primary-container": "#d4ada1",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#454745",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#ece0dc",
+                        "primary-fixed": "#ffdbd0",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#263238",
+                        "on-primary-fixed-variant": "#5d4037",
+                        "surface-dim": "#cfdce4",
+                        "on-tertiary-fixed": "#1a1c1a",
+                        "primary": "#442a22",
+                        "inverse-on-surface": "#e6f3fb",
+                        "on-tertiary-fixed-variant": "#454745",
+                        "surface-tint": "#77574d",
+                        "secondary-fixed-dim": "#cfc4c0",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f4faff",
+                        "secondary": "#655d5a",
+                        "surface-container-high": "#ddeaf2",
+                        "on-background": "#111d23",
+                        "surface-container": "#e3f0f8",
+                        "on-secondary-fixed-variant": "#4c4542"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["60px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        .shadow-subtle {
+            box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.03);
+        }
+        .hover-shadow-elevated:hover {
+            box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+        
+        .transition-all-custom {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased">
+<!-- Header Component -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 z-50 sticky transition-all-custom">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed-dim" href="#">
+                Darihome
+            </a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-primary dark:text-primary-fixed-dim border-b border-primary dark:border-primary-fixed-dim pb-1 font-label-sm text-label-sm opacity-80 transition-opacity duration-200" href="#">
+                    Home
+                </a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-label-sm text-label-sm" href="#">
+                    Shop
+                </a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-label-sm text-label-sm" href="#">
+                    Categories
+                </a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-label-sm text-label-sm" href="#">
+                    About Us
+                </a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300 font-label-sm text-label-sm" href="#">
+                    Contact
+                </a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center space-x-4">
+<button aria-label="search" class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="favorite" class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity hidden sm:block">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="person" class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity hidden sm:block">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button aria-label="menu" class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity md:hidden">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full" data-alt="A high-end, professionally photographed interior scene for a premium furniture brand. A single, beautifully handcrafted minimalist wooden stool made of light oak sits in a warm, sun-drenched modern living room." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiEF85tYbrQbwQg2XpJSbkfkyyKFgfJDBfP0s8v-yZJ0csdCuBSiw7I1-9CdqOHc0eWf6u_3RRN3ONnFHwD71KQZDvVhki-gFiHTCRZiYhru_SP2vv1V6zIAYHq3DPudfSoq7A2QVGHclfl1AICWk8zROBzeKxuCGtUDZCIl1zrEacHhAtZVRdJgVMfWPSWslyLI_JuNb8IDMAM8_jKbr_5N6awKmKMbCB8hTqsIOYGAvc3NwSDQrgMw'); background-size: cover; background-position: center;"><div class="absolute inset-0 bg-surface/40 mix-blend-multiply"></div></div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center justify-center">
+<h1 class="font-headline-xl text-headline-xl text-primary mb-6 drop-shadow-sm">
+                    Handcrafted for Your Home
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    Discover unique wooden furniture designed with natural materials, timeless craftsmanship, and attention to every detail.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded hover:bg-primary-container transition-colors duration-300 min-w-[200px] text-center" href="#">
+                        Explore Collection
+                    </a>
+<a class="bg-transparent border border-primary text-primary font-label-sm text-label-sm px-8 py-4 rounded hover:bg-surface-variant transition-colors duration-300 min-w-[200px] text-center" href="#">
+                        Discover Our Story
+                    </a>
+</div>
+</div>
+</section>
+<!-- Shop by Category Section -->
+<section class="py-20 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Shop by Category</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Curated collections for every corner of your living space.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-gutter">
+<!-- Category Card 1 -->
+<a class="group relative block aspect-square overflow-hidden rounded-lg shadow-subtle hover-shadow-elevated transition-all-custom bg-surface-container-lowest" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up, high-quality image focusing on a beautifully crafted wooden stool with intricate joinery details. The stool sits against a clean, minimalist off-white background, emphasizing its solid oak construction and smooth finish. The lighting is soft and natural, highlighting the tactile qualities of the wood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ2gjttSduSUaYlP8c_RylklugfWKbonTyL1grtsG5tyfZ3Dv_mebmXZTL--7dTsstH6Ims1LhgrUvKh6MwGBkJu-SwCz4kA93wQwgz5Yb_-fLyTTX_Z5YQjbibn5xEMFUqt875TDwkEoZGM4eSLK0UFh5WLOV8DMTb7w_UAHZXX53qAxY6LKns54uBRArHcdOlc59IhO1HDbnyDUU8hGZC5BDF-8IdUvntKRLILIbGswwJLLmaqjr5w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2">Stools</h3>
+<span class="font-label-sm text-label-sm text-on-primary/80 uppercase tracking-widest flex items-center group-hover:text-on-primary transition-colors">Shop Now <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span></span>
+</div>
+</a>
+<!-- Category Card 2 -->
+<a class="group relative block aspect-square overflow-hidden rounded-lg shadow-subtle hover-shadow-elevated transition-all-custom bg-surface-container-lowest" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An elegant modern wooden dining table showcased in a bright, airy dining room. The table features a sleek, minimalist design with a rich walnut finish, surrounded by subtle, neutral-toned decor. Soft natural light casts gentle shadows, emphasizing the table's clean lines and premium craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXJRZ0TMkOQge0UKsISiavAIiVTjG_0ZMfbgmZ8pS3ON5oazAvDrGfONbL1Wxehi3Pwoq4H8hPXFSteTqkwNY21K6rFB-_8A3qxRCIWCOHgF07CGU-tIa8soPEHhxYx0TFbrUHST9Y4hpfBltOlvpke6Fbf230ve1x1O9Y_lzJmJBPDOu1Ekw8S5RqwaYtU0-RqQhYVcyiQqbrd0Ur6WC2njdJ6bSeMWEqgAq_VwgEswdcch3ObrbrBA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2">Tables</h3>
+<span class="font-label-sm text-label-sm text-on-primary/80 uppercase tracking-widest flex items-center group-hover:text-on-primary transition-colors">Shop Now <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span></span>
+</div>
+</a>
+<!-- Category Card 3 -->
+<a class="group relative block aspect-square overflow-hidden rounded-lg shadow-subtle hover-shadow-elevated transition-all-custom bg-surface-container-lowest" href="#">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist geometric wooden wall shelf mounted on a plain, textured beige wall. The shelf holds a few carefully curated items: a small potted plant and a ceramic vase. The design is simple, functional, and embodies modern Scandinavian aesthetics with high-quality natural wood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0VURtH6VMCMddTSJB0mUbTKDytBdJfDuAOV1QawKz3hFHReYr5k01_CT_WTn3ypO3U4QCkpEB_8mrgfczzrPzXGX6HCIXOQh6LXC06mmz_C4hSjcKPGJ0DQJ4aUubjajJelLt_9LgwK9li7M8lOq9KD3kp8aZta0qnSRbfxDyRi3d-364IKlrjC94TIUGslNId5CxBcJlnkhMwWD5PUJ8Vcrj0l_rbQwVHUKYZNAiG8Sloszq2aTiBw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-2">Wall Shelves</h3>
+<span class="font-label-sm text-label-sm text-on-primary/80 uppercase tracking-widest flex items-center group-hover:text-on-primary transition-colors">Shop Now <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span></span>
+</div>
+</a>
+</div>
+</section>
+<!-- Footer Component -->
+<footer class="bg-surface-container-highest dark:bg-tertiary-container border-t border-outline-variant dark:border-outline full-width rounded-t-none mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto">
+<!-- Brand Info -->
+<div class="flex flex-col space-y-4">
+<a class="font-headline-lg text-headline-lg text-primary dark:text-on-primary-container mb-2" href="#">
+                        Darihome
+                    </a>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-tertiary-fixed-variant">
+                        © 2024 Darihome. Handcrafted with precision and care.
+                    </p>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-col space-y-3 md:col-start-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline transition-all duration-300 ease-in-out" href="#">
+                        Shop
+                    </a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline transition-all duration-300 ease-in-out" href="#">
+                        Service
+                    </a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-on-tertiary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim underline-offset-4 hover:underline transition-all duration-300 ease-in-out" href="#">
+                        Contact
+                    </a>
+</div>
+<!-- Newsletter -->
+<div class="flex flex-col space-y-3">
+<span class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-semibold mb-1">
+                        Newsletter
+                    </span>
+<form class="flex flex-col space-y-2" onsubmit="event.preventDefault();">
+<input class="bg-transparent border-b border-on-surface-variant/30 text-on-surface focus:outline-none focus:border-primary py-2 font-body-md text-body-md transition-colors" placeholder="Email Address" required="" type="email"/>
+<button class="self-start text-primary font-label-sm text-label-sm hover:text-primary-container transition-colors py-2 flex items-center" type="submit">
+                            Subscribe <span class="material-symbols-outlined ml-1" style="font-size: 16px;">arrow_forward</span>
+</button>
+</form>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

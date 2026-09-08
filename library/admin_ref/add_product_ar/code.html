@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إضافة منتج - Darihome</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#131f00",
+                      "background": "#fcf9f8",
+                      "surface-variant": "#e4e2e1",
+                      "on-primary-fixed": "#301400",
+                      "tertiary-fixed-dim": "#add461",
+                      "tertiary-fixed": "#c8f17a",
+                      "on-secondary-fixed": "#2c160e",
+                      "inverse-surface": "#303030",
+                      "on-primary-fixed-variant": "#653d1e",
+                      "on-secondary-container": "#795950",
+                      "secondary": "#77574d",
+                      "secondary-fixed": "#ffdbd0",
+                      "surface-dim": "#dcd9d9",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#f0eded",
+                      "outline-variant": "#d5c3b8",
+                      "on-background": "#1b1c1c",
+                      "surface-container-highest": "#e4e2e1",
+                      "surface-tint": "#805533",
+                      "on-primary": "#ffffff",
+                      "primary-fixed-dim": "#f4bb92",
+                      "on-surface": "#1b1c1c",
+                      "on-secondary": "#ffffff",
+                      "outline": "#83746b",
+                      "on-secondary-fixed-variant": "#5d4037",
+                      "primary-fixed": "#ffdcc5",
+                      "on-primary-container": "#ffe3d1",
+                      "tertiary-container": "#517201",
+                      "on-tertiary-container": "#cdf67f",
+                      "tertiary": "#3e5800",
+                      "on-surface-variant": "#51443c",
+                      "surface": "#fcf9f8",
+                      "on-tertiary-fixed-variant": "#364e00",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#6f4627",
+                      "inverse-on-surface": "#f3f0f0",
+                      "surface-container-low": "#f6f3f2",
+                      "secondary-container": "#fed3c7",
+                      "inverse-primary": "#f4bb92",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#8b5e3c",
+                      "error": "#ba1a1a",
+                      "surface-container-high": "#eae7e7",
+                      "surface-bright": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "secondary-fixed-dim": "#e7bdb1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "header-height": "64px",
+                      "sidebar-width": "260px",
+                      "unit": "4px",
+                      "container-padding": "24px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-bold": [
+                              "IBM Plex Sans"
+                      ],
+                      "headline-sm": [
+                              "IBM Plex Sans"
+                      ],
+                      "label-caps": [
+                              "IBM Plex Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "IBM Plex Sans"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "IBM Plex Sans"
+                      ]
+              },
+              "fontSize": {
+                      "label-bold": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "30px",
+                              {
+                                      "lineHeight": "38px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant flex justify-between items-center h-header-height px-container-padding sticky top-0 z-40 ml-[260px] rtl:mr-[260px] rtl:ml-0">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-primary font-bold">Darihome</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
+<img alt="Administrator Profile" class="w-full h-full object-cover" data-alt="Administrator profile picture showing a professional headshot in a modern office setting. Soft lighting, neutral background, high-quality corporate aesthetic fitting a modern SaaS platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdlZfmZKCMt-Qv_2J2BfZ0PMD28zNX8JuI0Fwy7bLTnzOie3WEBz5GywG7dXLaMc4kzWbZpMOMAI9hWOCnvFZIsN6VM8WPeD0LZGGDYgf8Gpbc5o89F0248f5mDoY1kDMRw8t0SK7rTIUcnvkT25kkxBeRmDu7YjeooBA27C73A8qsq4p3Q2DsRPDXWSu7zMR3X6v1QxjjORmxupHOaOKkC1vGnrVdiIeT0fMQKMia5Y1Vq4SQrts6fQ"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="bg-on-secondary-fixed-variant text-surface-variant/80 fixed sidebar-width h-full left-0 rtl:right-0 border-r border-outline-variant rtl:border-l rtl:border-r-0 flex flex-col w-[260px] overflow-y-auto z-50 transition-colors duration-200">
+<div class="p-6 border-b border-outline-variant/20 mb-4">
+<div class="font-headline-md text-headline-md text-primary-fixed mb-1">Darihome</div>
+<div class="font-body-sm text-body-sm text-surface-variant/60">Craftsmanship Admin</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg border-l-4 border-primary bg-primary-container/20 text-on-primary-container transition-colors duration-200 rtl:border-l-0 rtl:border-r-4" href="#">
+<span class="material-symbols-outlined" data-icon="chair" data-weight="fill" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-body-md text-body-md font-medium">Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-body-md text-body-md">Categories</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md text-body-md">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="handyman">handyman</span>
+<span class="font-body-md text-body-md">Custom Requests</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-surface-variant/80 hover:text-surface-variant hover:bg-surface-variant/10 transition-colors duration-200 mt-8" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[260px] rtl:mr-[260px] rtl:ml-0 p-container-padding pb-24 max-w-[1600px] mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-2">إضافة منتج جديد</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">قم بملء تفاصيل المنتج الجديد ليتم عرضه في المتجر.</p>
+</div>
+<!-- Sticky Action Bar (Desktop Top Right) -->
+<div class="flex gap-4">
+<button class="px-6 py-2 border border-outline text-on-surface font-label-bold text-label-bold rounded hover:bg-surface-container-high transition-colors">
+                    إلغاء
+                </button>
+<button class="px-6 py-2 bg-primary-container text-on-primary font-label-bold text-label-bold rounded hover:bg-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                    حفظ المنتج
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<!-- Left/Main Column: Basic Info & Details -->
+<div class="xl:col-span-2 space-y-6">
+<!-- Section 1: Basic Information -->
+<section class="bg-surface rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                        المعلومات الأساسية
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">اسم المنتج (العربية)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="مثال: طاولة قهوة من خشب الزيتون" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">Nom du produit (Français)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" dir="ltr" placeholder="Ex: Table basse en bois d'olivier" type="text"/>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">الوصف (العربية)</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" placeholder="وصف تفصيلي للمنتج..." rows="4"></textarea>
+</div>
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">Description (Français)</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" dir="ltr" placeholder="Description détaillée..." rows="4"></textarea>
+</div>
+</div>
+</section>
+<!-- Section 4: Product Details (Materials, Dims) -->
+<section class="bg-surface rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">design_services</span>
+                        تفاصيل المنتج
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">المادة الأساسية</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none">
+<option>خشب الزيتون (Olive Wood)</option>
+<option>خشب البلوط (Oak Wood)</option>
+<option>خشب الجوز (Walnut)</option>
+<option>خشب الزان (Beech)</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">الألوان المتاحة</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="طبيعي، بني داكن (مفصول بفاصلة)" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">الأبعاد (سم)</label>
+<div class="grid grid-cols-3 gap-4">
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 pr-10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="الطول" type="number"/>
+<span class="absolute right-3 top-2.5 text-on-surface-variant text-sm">L</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 pr-10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="العرض" type="number"/>
+<span class="absolute right-3 top-2.5 text-on-surface-variant text-sm">W</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 pr-10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="الارتفاع" type="number"/>
+<span class="absolute right-3 top-2.5 text-on-surface-variant text-sm">H</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right/Side Column: Images, Pricing, Categories -->
+<div class="space-y-6">
+<!-- Section 2: Images -->
+<section class="bg-surface rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">image</span>
+                        صور المنتج
+                    </h2>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 text-center hover:bg-surface-container-low transition-colors cursor-pointer mb-4">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">cloud_upload</span>
+<p class="font-body-md text-body-md text-on-surface mb-1">اسحب وأفلت الصور هنا</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">أو انقر لاختيار الملفات (PNG, JPG حتى 5MB)</p>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square rounded border border-outline-variant bg-surface-container-low flex items-center justify-center relative group overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">image</span>
+</div>
+<div class="aspect-square rounded border border-outline-variant bg-surface-container-low flex items-center justify-center relative group overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">image</span>
+</div>
+<div class="aspect-square rounded border border-outline-variant bg-surface-container-low flex items-center justify-center relative group overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">image</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Pricing & Category -->
+<section class="bg-surface rounded-xl border border-outline-variant p-6">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">sell</span>
+                        التصنيف والأسعار
+                    </h2>
+<div class="space-y-4 mb-6">
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">التصنيف الرئيسي</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none">
+<option>أثاث داخلي</option>
+<option>ديكور</option>
+<option>أدوات مائدة</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">التصنيف الفرعي</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors appearance-none">
+<option>طاولات</option>
+<option>كراسي</option>
+<option>خزائن</option>
+</select>
+</div>
+</div>
+<div class="space-y-4 border-t border-outline-variant pt-4">
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">السعر (د.ت - TND)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-mono" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-bold text-label-bold text-on-surface-variant">نسبة التخفيض (%)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors font-mono" max="100" min="0" placeholder="0" type="number"/>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>
