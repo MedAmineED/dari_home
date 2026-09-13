@@ -1,7 +1,7 @@
 {
   "name": "darihome-admin-backend",
   "version": "0.1.0",
-  "description": "Darihome Admin — NestJS + Prisma + MySQL backend",
+  "description": "Darya Admin — NestJS + Prisma + MySQL backend",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

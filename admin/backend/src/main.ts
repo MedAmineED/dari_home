@@ -39,8 +39,8 @@ async function bootstrap(): Promise<void> {
   );
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Darihome Admin API')
-    .setDescription('Administration API for the Darihome business platform')
+    .setTitle('Darya Admin API')
+    .setDescription('Administration API for the Darya business platform')
     .setVersion('1.0')
     .addBearerAuth()
     .addCookieAuth(config.refreshCookie.name)
@@ -51,7 +51,7 @@ async function bootstrap(): Promise<void> {
   await app.listen(config.port);
   // eslint-disable-next-line no-console
   console.log(
-    `Darihome Admin API running on http://localhost:${config.port}/${config.apiPrefix}`,
+    `Darya Admin API running on http://localhost:${config.port}/${config.apiPrefix}`,
   );
 }
 

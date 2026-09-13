@@ -10,6 +10,11 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 
+// Storefront must reflect admin changes immediately: force dynamic SSR on
+// every request and never cache upstream API fetches (no static/ISR cache).
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600'],

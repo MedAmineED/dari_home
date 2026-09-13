@@ -2,7 +2,7 @@
   "name": "darihome-storefront",
   "version": "0.1.0",
   "private": true,
-  "description": "Darihome public storefront — Next.js (App Router) + TypeScript, consuming the NestJS storefront API.",
+  "description": "Darya public storefront — Next.js (App Router) + TypeScript, consuming the NestJS storefront API.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -7,7 +7,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: `${strings.appName} — ${strings.appSubtitle}`,
-  description: 'لوحة إدارة داري هوم لإدارة المنتجات والطلبات والعملاء',
+  description: 'لوحة إدارة داريا لإدارة المنتجات والطلبات والعملاء',
 };
 
 export default function RootLayout({

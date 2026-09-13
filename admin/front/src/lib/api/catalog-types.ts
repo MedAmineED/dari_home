@@ -59,6 +59,7 @@ export interface CategoryInput {
   slug?: string;
   descriptionAr?: string;
   descriptionFr?: string;
+  image?: string | null;
   isActive?: boolean;
   sortOrder?: number;
   parentId?: string | null;

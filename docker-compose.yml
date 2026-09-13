@@ -1,4 +1,4 @@
-# Darihome — full stack (admin + visitors) for `docker compose up`.
+# Darya — full stack (admin + visitors) for `docker compose up`.
 #
 #   docker compose up --build
 #
@@ -61,7 +61,7 @@ services:
       API_PREFIX: api/v1
       DATABASE_URL: mysql://${MYSQL_USER:-darihome}:${MYSQL_PASSWORD:-darihome}@mysql:3306/${MYSQL_DATABASE:-darihome_admin}
       # Browser origins allowed to call the API directly (admin + storefront).
-      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:3100}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:3100,http://localhost:3002}
       JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-change-me-access-secret}
       JWT_ACCESS_EXPIRES_IN: ${JWT_ACCESS_EXPIRES_IN:-15m}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-change-me-refresh-secret}
@@ -112,6 +112,7 @@ services:
       context: ./darihome_view
       args:
         NEXT_PUBLIC_SITE_URL: ${STOREFRONT_URL:-http://localhost:3100}
+        NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD: ${FREE_SHIPPING_THRESHOLD:-300}
     restart: unless-stopped
     environment:
       NODE_ENV: production

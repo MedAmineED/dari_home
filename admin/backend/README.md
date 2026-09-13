@@ -1,6 +1,6 @@
-# Darihome Admin — Backend
+# Darya Admin — Backend
 
-NestJS + Prisma + MySQL REST API for the Darihome administration platform.
+NestJS + Prisma + MySQL REST API for the Darya administration platform.
 
 This phase implements the **foundation** (full future-ready database schema) and
 **authentication + RBAC**. Catalog, commerce, dashboard and settings modules are

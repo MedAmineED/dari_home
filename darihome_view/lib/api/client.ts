@@ -60,13 +60,21 @@ export async function apiGet<T>(
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
+  // Fresh by default (no-store) so admin edits — deleting a category, adding a
+  // product, price changes — show on the storefront immediately. Pass an
+  // explicit `revalidate` only where some staleness is acceptable.
+  const cacheOptions =
+    revalidate === undefined
+      ? { cache: 'no-store' as const }
+      : { next: { revalidate, tags } };
+
   let response: Response;
   try {
     response = await fetch(url, {
       method: 'GET',
       headers: { accept: 'application/json' },
       signal: controller.signal,
-      next: { revalidate, tags },
+      ...cacheOptions,
     });
   } catch (err) {
     clearTimeout(timeout);

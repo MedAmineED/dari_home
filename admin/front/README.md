@@ -1,6 +1,6 @@
-# Darihome Admin — Frontend
+# Darya Admin — Frontend
 
-Next.js (App Router) + TypeScript administration dashboard for Darihome.
+Next.js (App Router) + TypeScript administration dashboard for Darya.
 
 This phase delivers the **authentication shell**: login, session bootstrap via
 the httpOnly refresh cookie, a protected RTL dashboard layout (sidebar, header,

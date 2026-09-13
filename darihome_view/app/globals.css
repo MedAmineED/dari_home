@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ============================================================
-   Darihome — Artisanal Nordic Minimalist
+   Darya — Artisanal Nordic Minimalist
    Ported from the template's assets/css/main.css. Tailwind is now
    compiled at build time (no Play CDN). Fonts come from next/font.
    ============================================================ */
@@ -83,6 +83,9 @@ html[dir='rtl'] .flip-rtl {
 .site-header {
   transition:
     background-color 0.4s var(--ease-out-soft),
+    /* Cross-faded with the background: flipping the ink instantly would leave
+       dark nav text sitting on the photograph for the length of the fade. */
+    color 0.4s var(--ease-out-soft),
     box-shadow 0.4s var(--ease-out-soft),
     backdrop-filter 0.4s ease;
 }
@@ -90,6 +93,11 @@ html[dir='rtl'] .flip-rtl {
   background-color: color-mix(in srgb, var(--surface) 88%, transparent);
   backdrop-filter: saturate(140%) blur(12px);
   box-shadow: 0 1px 0 color-mix(in srgb, var(--outline-variant) 60%, transparent);
+}
+/* Over the full-bleed hero the nav sits directly on the photograph, so it
+   goes white and leans on .hero-topfade for contrast. */
+.site-header.on-hero {
+  color: #ffffff;
 }
 .site-header.on-light {
   color: var(--on-surface);
@@ -202,6 +210,80 @@ html[dir='rtl'] .flip-rtl {
 .product-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 22px 45px -22px rgba(17, 29, 35, 0.28);
+}
+
+/* Hero — full-bleed photograph, copy on a tinted brown card ───────────
+   The picture now runs edge to edge at full saturation. Legibility comes
+   from a translucent panel of the brand brown sitting on top of it rather
+   than from washing the photograph out, so white type holds a fixed
+   contrast ratio regardless of what the image is doing underneath. The
+   blur is doing real work here too: it stops busy detail (foliage, shelf
+   edges) from reading through the copy as visual noise. */
+.hero-full {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: min(94vh, 940px);
+  /* Top clears the fixed 80px header so the card can never slide under the
+     nav; bottom reserves a lane for the scroll cue so it cannot land on the
+     card either. Both were overlapping before. */
+  padding: 7rem 0 6rem;
+}
+.hero-card {
+position: relative;
+    max-width: 34rem;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    background: rgb(133 111 79 / 62%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+@media (min-width: 768px) {
+  .hero-card {
+    padding: 2.5rem 2.25rem;
+  }
+}
+/* Without backdrop-filter the photo is not dimmed, so the tint has to carry
+   the contrast on its own. */
+@supports not (
+  (backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))
+) {
+  .hero-card {
+    background: rgba(68, 42, 34, 0.82);
+  }
+}
+
+/* Keeps the transparent header readable over the photograph. Dark, narrow
+   and only at the very top — it deepens the image rather than washing it,
+   which is the opposite of the white overlay this replaced. */
+.hero-topfade {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 22%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 12, 10, 0.45) 0%,
+    rgba(17, 12, 10, 0.16) 45%,
+    rgba(17, 12, 10, 0) 100%
+  );
+}
+
+.hero-paragraph {
+    border-radius: 15px;
+    background-color: #cfcecd8a;
+    padding: 10px;
+}
+.hero-text-papragraph {
+    font-weight: bolder;
+    color: rgb(40 28 10);
+}
+/* Scroll cue. Centring is physical, so it needs no RTL case. */
+.hero-scroll {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .tile-scrim {

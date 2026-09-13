@@ -12,6 +12,10 @@ COPY . .
 # NEXT_PUBLIC_* vars are inlined at build time (used for SEO/canonical URLs).
 ARG NEXT_PUBLIC_SITE_URL
 ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
+# Free-shipping threshold in TND. A business number, so it belongs in the
+# deployment config rather than the source; empty falls back to the app default.
+ARG NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD
+ENV NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD=$NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD
 RUN npm run build
 
 # ── Runtime ─────────────────────────────────────────────────

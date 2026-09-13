@@ -108,6 +108,15 @@ export interface Dictionary {
     outOfStock: string;
     home: string;
     shop: string;
+    trustDelivery: string;
+    trustDeliveryNote: string;
+    trustReturns: string;
+    trustReturnsNote: string;
+    trustCod: string;
+    trustCodNote: string;
+    trustWarranty: string;
+    trustWarrantyNote: string;
+    recentlyViewed: string;
   };
   cart: {
     title: string;
@@ -119,6 +128,9 @@ export interface Dictionary {
     continue: string;
     remove: string;
     each: string;
+    /** Contains a {amount} placeholder. */
+    freeShipRemaining: string;
+    freeShipUnlocked: string;
   };
   checkout: {
     title: string;
@@ -150,9 +162,9 @@ const ar: Dictionary = {
   meta: {
     homeTitle: 'مصنوعة يدويًا من أجل بيتك',
     shopTitle: 'تسوّق كل القطع',
-    siteName: 'داري هوم',
+    siteName: 'داريا',
   },
-  brand: { name: 'داري هوم' },
+  brand: { name: 'داريا' },
   nav: {
     home: 'الرئيسية',
     shop: 'المتجر',
@@ -180,7 +192,7 @@ const ar: Dictionary = {
     scroll: 'اكتشف المزيد',
   },
   marquee: {
-    a: 'خشب صنوبر صلب',
+    a: 'خشب عالي الجودة',
     b: 'صناعة يدوية',
     c: 'توصيل لكامل الجمهورية',
     d: 'تشطيب زيتي طبيعي',
@@ -201,7 +213,7 @@ const ar: Dictionary = {
   story: {
     eyebrow: 'قصّتنا',
     title: 'الجمال في البساطة والصبر',
-    body: 'في داري هوم نؤمن بأن الأثاث يُصنع ليدوم. كل قطعة تُنحت من خشب الصنوبر الصلب على يد حِرفيين، فتحمل دفء الصنعة اليدوية وسكينة العيش الهادئ.',
+    body: 'في داريا نؤمن بأن الأثاث يُصنع ليدوم. كل قطعة تُنحت من خشب عالي الجودة على يد حِرفيين، فتحمل دفء الصنعة اليدوية وسكينة العيش الهادئ.',
     stat1n: '100%',
     stat1l: 'خشب طبيعي',
     stat2n: '5 سنوات',
@@ -211,7 +223,7 @@ const ar: Dictionary = {
     cta: 'تعرّف علينا أكثر',
   },
   news: {
-    title: 'انضمّ إلى عائلة داري هوم',
+    title: 'انضمّ إلى عائلة داريا',
     subtitle: 'اشترك لتصلك أخبار القطع الجديدة وإلهام العيش الهادئ.',
     placeholder: 'بريدك الإلكتروني',
     button: 'اشترك',
@@ -230,7 +242,7 @@ const ar: Dictionary = {
     care: 'دليل العناية',
     getInTouch: 'تواصل معنا',
     stores: 'المتاجر',
-    rights: '© 2026 داري هوم. جميع الحقوق محفوظة.',
+    rights: '© 2026 داريا. جميع الحقوق محفوظة.',
   },
   shop: {
     title: 'تسوّق الكل',
@@ -266,6 +278,15 @@ const ar: Dictionary = {
     outOfStock: 'غير متوفر حاليًا',
     home: 'الرئيسية',
     shop: 'المتجر',
+    trustDelivery: 'توصيل لكامل الجمهورية',
+    trustDeliveryNote: 'خلال 3 إلى 5 أيام عمل',
+    trustReturns: 'إرجاع مجاني',
+    trustReturnsNote: 'خلال 14 يومًا من الاستلام',
+    trustCod: 'الدفع عند الاستلام',
+    trustCodNote: 'ادفع نقدًا عند وصول طلبك',
+    trustWarranty: 'ضمان 5 سنوات',
+    trustWarrantyNote: 'على عيوب الصناعة',
+    recentlyViewed: 'شاهدتَ مؤخّرًا',
   },
   cart: {
     title: 'سلة التسوّق',
@@ -277,6 +298,8 @@ const ar: Dictionary = {
     continue: 'مواصلة التسوّق',
     remove: 'إزالة',
     each: 'للقطعة',
+    freeShipRemaining: 'أضف {amount} لتحصل على توصيل مجاني',
+    freeShipUnlocked: 'رائع — التوصيل مجاني على طلبك',
   },
   checkout: {
     title: 'إتمام الطلب',
@@ -308,9 +331,9 @@ const fr: Dictionary = {
   meta: {
     homeTitle: 'Fait main pour votre maison',
     shopTitle: 'Toute la collection',
-    siteName: 'Darihome',
+    siteName: 'Darya',
   },
-  brand: { name: 'Darihome' },
+  brand: { name: 'Darya' },
   nav: {
     home: 'Accueil',
     shop: 'Boutique',
@@ -338,7 +361,7 @@ const fr: Dictionary = {
     scroll: 'Explorer',
   },
   marquee: {
-    a: 'Bois de pin massif',
+    a: 'Bois de haute qualité',
     b: 'Fait main',
     c: 'Livraison partout en Tunisie',
     d: 'Finition à l’huile naturelle',
@@ -359,7 +382,7 @@ const fr: Dictionary = {
   story: {
     eyebrow: 'Notre histoire',
     title: 'La beauté de la simplicité et de la patience',
-    body: 'Chez Darihome, nous croyons au mobilier fait pour durer. Chaque pièce est taillée dans du pin massif par des artisans, portant la chaleur du travail manuel et la sérénité d’un quotidien apaisé.',
+    body: 'Chez Darya, nous croyons au mobilier fait pour durer. Chaque pièce est taillée dans un bois de haute qualité par des artisans, portant la chaleur du travail manuel et la sérénité d’un quotidien apaisé.',
     stat1n: '100 %',
     stat1l: 'Bois naturel',
     stat2n: '5 ans',
@@ -369,7 +392,7 @@ const fr: Dictionary = {
     cta: 'En savoir plus',
   },
   news: {
-    title: 'Rejoignez la famille Darihome',
+    title: 'Rejoignez la famille Darya',
     subtitle:
       'Abonnez-vous pour découvrir les nouveautés et notre inspiration slow living.',
     placeholder: 'Votre adresse e-mail',
@@ -389,7 +412,7 @@ const fr: Dictionary = {
     care: 'Guide d’entretien',
     getInTouch: 'Nous contacter',
     stores: 'Boutiques',
-    rights: '© 2026 Darihome. Tous droits réservés.',
+    rights: '© 2026 Darya. Tous droits réservés.',
   },
   shop: {
     title: 'Toute la boutique',
@@ -425,6 +448,15 @@ const fr: Dictionary = {
     outOfStock: 'Indisponible',
     home: 'Accueil',
     shop: 'Boutique',
+    trustDelivery: 'Livraison partout en Tunisie',
+    trustDeliveryNote: 'Sous 3 à 5 jours ouvrés',
+    trustReturns: 'Retours gratuits',
+    trustReturnsNote: 'Sous 14 jours après réception',
+    trustCod: 'Paiement à la livraison',
+    trustCodNote: 'Réglez en espèces à réception',
+    trustWarranty: 'Garantie 5 ans',
+    trustWarrantyNote: 'Contre les défauts de fabrication',
+    recentlyViewed: 'Vus récemment',
   },
   cart: {
     title: 'Panier',
@@ -436,6 +468,8 @@ const fr: Dictionary = {
     continue: 'Continuer les achats',
     remove: 'Retirer',
     each: 'l’unité',
+    freeShipRemaining: 'Plus que {amount} pour la livraison offerte',
+    freeShipUnlocked: 'Bravo — livraison offerte sur cette commande',
   },
   checkout: {
     title: 'Finaliser la commande',

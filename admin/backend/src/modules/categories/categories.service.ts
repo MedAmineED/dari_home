@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -7,6 +8,10 @@ import { Prisma } from '@prisma/client';
 import { PaginatedResult } from '../../common/interfaces/api-response.interface';
 import { buildPaginatedResult } from '../../common/utils/paginate';
 import { slugify } from '../../common/utils/slugify';
+import {
+  STORAGE_PROVIDER,
+  StorageProvider,
+} from '../storage/storage.types';
 import {
   CategoriesRepository,
   CategoryWithMeta,
@@ -20,11 +25,40 @@ export interface CategoryTreeNode extends CategoryResponse {
   children: CategoryTreeNode[];
 }
 
+/** An uploaded file as delivered by Multer (memory storage). */
+export interface UploadedCategoryImage {
+  originalname: string;
+  mimetype: string;
+  buffer: Buffer;
+}
+
 const SORTABLE = new Set(['sortOrder', 'nameFr', 'nameAr', 'createdAt']);
+const IMAGE_FOLDER = 'categories';
 
 @Injectable()
 export class CategoriesService {
-  constructor(private readonly repository: CategoriesRepository) {}
+  constructor(
+    private readonly repository: CategoriesRepository,
+    @Inject(STORAGE_PROVIDER) private readonly storage: StorageProvider,
+  ) {}
+
+  /** Stores a category image and returns its public URL (set via `image`). */
+  async uploadImage(
+    file: UploadedCategoryImage | undefined,
+  ): Promise<{ url: string }> {
+    if (!file) {
+      throw new BadRequestException({
+        message: 'No image file was provided',
+        code: 'NO_FILE',
+      });
+    }
+    const stored = await this.storage.save(file.buffer, {
+      folder: IMAGE_FOLDER,
+      originalName: file.originalname,
+      mimeType: file.mimetype,
+    });
+    return { url: stored.url };
+  }
 
   async create(dto: CreateCategoryDto): Promise<CategoryResponse> {
     if (dto.parentId) {

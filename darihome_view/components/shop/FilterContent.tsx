@@ -28,7 +28,8 @@ export function FilterContent({
     { key: 'price_asc', label: dict.shop.sortPriceAsc },
     { key: 'price_desc', label: dict.shop.sortPriceDesc },
   ];
-  const visibleCategories = categories.filter((c) => c.productCount > 0);
+  // Show all categories the admin created, even those without products yet.
+  const visibleCategories = categories;
 
   return (
     <div className="flex flex-col gap-9">

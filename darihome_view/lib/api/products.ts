@@ -51,7 +51,6 @@ export async function getProducts(
         sort: params.sort,
         featured: params.featured ? 'true' : undefined,
       },
-      revalidate: 300,
     },
   );
   return { items: data.items.map(mapCard), meta: data.meta };
@@ -71,7 +70,6 @@ export async function getProduct(
   try {
     const data = await apiGet<StorefrontProductDetail>(
       `/storefront/products/${encodeURIComponent(slug)}`,
-      { revalidate: 120 },
     );
     return mapDetail(data);
   } catch (err) {

@@ -1,4 +1,4 @@
-// Darihome Admin — Prisma schema
+// Darya Admin — Prisma schema
 // Full, future-ready data model. Only the auth/RBAC models have module code in
 // this phase; the catalog/commerce/settings models are migrated now so that
 // later phases add module code against a stable schema (no rewrites).

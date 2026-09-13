@@ -1,6 +1,6 @@
-# Darihome — Storefront (Next.js)
+# Darya — Storefront (Next.js)
 
-The public, visitor-facing storefront for **Darihome / داري هوم**, built with
+The public, visitor-facing storefront for **Darya / داريا**, built with
 **Next.js (App Router) + TypeScript**. It is a separate application from the
 admin platform and consumes the NestJS **storefront API** — it never talks to
 the database or Prisma directly.

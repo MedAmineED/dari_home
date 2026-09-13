@@ -12,6 +12,9 @@ import { ProductGallery } from '@/components/product/ProductGallery';
 import { ProductPurchase } from '@/components/product/ProductPurchase';
 import { Accordion } from '@/components/product/Accordion';
 import { ProductCard } from '@/components/product/ProductCard';
+import { TrustRow } from '@/components/product/TrustRow';
+import { StickyBuyBar } from '@/components/product/StickyBuyBar';
+import { RecentlyViewed } from '@/components/product/RecentlyViewed';
 import { JsonLd } from '@/components/seo/JsonLd';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3100';
@@ -70,7 +73,7 @@ function productJsonLd(
     name,
     description,
     image: product.images.map((img) => img.url),
-    brand: { '@type': 'Brand', name: 'Darihome' },
+    brand: { '@type': 'Brand', name: 'Darya' },
     offers: {
       '@type': 'Offer',
       price: product.price,
@@ -105,6 +108,14 @@ export default async function ProductPage({
     product.descriptionAr,
     product.descriptionFr,
   );
+
+  const cartItem = {
+    slug: product.slug,
+    nameAr: product.nameAr,
+    nameFr: product.nameFr,
+    price: product.price,
+    image: product.primaryImage?.url ?? null,
+  };
 
   const related = await getRelatedProducts(
     product.category?.slug,
@@ -203,16 +214,9 @@ export default async function ProductPage({
             </p>
           )}
 
-          <ProductPurchase
-            dict={dict}
-            item={{
-              slug: product.slug,
-              nameAr: product.nameAr,
-              nameFr: product.nameFr,
-              price: product.price,
-              image: product.primaryImage?.url ?? null,
-            }}
-          />
+          <ProductPurchase dict={dict} item={cartItem} />
+
+          <TrustRow dict={dict} />
 
           <div className="mt-10 border-t hairline">
             {longDescription && (
@@ -226,6 +230,8 @@ export default async function ProductPage({
           </div>
         </div>
       </div>
+
+      <StickyBuyBar dict={dict} item={cartItem} name={name} watchId="buy-box" />
 
       {related.length > 0 && (
         <section className="mt-24">
@@ -245,6 +251,16 @@ export default async function ProductPage({
           </div>
         </section>
       )}
+
+      <RecentlyViewed
+        locale={locale}
+        dict={dict}
+        slug={product.slug}
+        nameAr={product.nameAr}
+        nameFr={product.nameFr}
+        price={product.price}
+        image={product.primaryImage?.url ?? null}
+      />
     </main>
   );
 }

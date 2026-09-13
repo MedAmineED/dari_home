@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -7,17 +8,51 @@ import {
   Patch,
   Post,
   Query,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express';
+import type { Request } from 'express';
+import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../../common/decorators/current-user.decorator';
 import { RequirePermissions } from '../../common/decorators/permissions.decorator';
 import { PermissionsGuard } from '../../common/guards/permissions.guard';
 import { AuditService } from '../audit/audit.service';
-import { CategoriesService } from './categories.service';
+import {
+  CategoriesService,
+  UploadedCategoryImage,
+} from './categories.service';
 import { CategoryQueryDto } from './dto/category-query.dto';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const ALLOWED_MIME = new Set([
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'image/gif',
+  'image/avif',
+]);
+
+function imageFileFilter(
+  _req: Request,
+  file: { mimetype: string },
+  cb: (error: Error | null, accept: boolean) => void,
+): void {
+  if (ALLOWED_MIME.has(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(
+      new BadRequestException({
+        message: 'Only image files are allowed',
+        code: 'INVALID_FILE_TYPE',
+      }),
+      false,
+    );
+  }
+}
 
 @ApiTags('Categories')
 @ApiBearerAuth()
@@ -45,6 +80,19 @@ export class CategoriesController {
   @RequirePermissions('category:read')
   findOne(@Param('id') id: string) {
     return this.categoriesService.findOne(id);
+  }
+
+  @Post('upload-image')
+  @RequirePermissions('category:create')
+  @ApiConsumes('multipart/form-data')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      limits: { fileSize: MAX_FILE_SIZE },
+      fileFilter: imageFileFilter,
+    }),
+  )
+  uploadImage(@UploadedFile() file: UploadedCategoryImage) {
+    return this.categoriesService.uploadImage(file);
   }
 
   @Post()

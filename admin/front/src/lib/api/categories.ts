@@ -43,3 +43,17 @@ export async function updateCategory(
 export async function deleteCategory(id: string): Promise<void> {
   await apiClient.delete(`/categories/${id}`);
 }
+
+/** Uploads a category image and returns its stored (relative) URL. */
+export async function uploadCategoryImage(
+  file: File,
+): Promise<{ url: string }> {
+  const form = new FormData();
+  form.append('file', file);
+  const res = await apiClient.post<ApiSuccess<{ url: string }>>(
+    '/categories/upload-image',
+    form,
+    { headers: { 'Content-Type': 'multipart/form-data' } },
+  );
+  return unwrap(res);
+}

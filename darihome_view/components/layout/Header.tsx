@@ -64,8 +64,9 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
     <>
       <header
         className={clsx(
-          'site-header on-light z-50',
+          'site-header z-50',
           isHome ? 'fixed inset-x-0 top-0' : 'sticky top-0 bg-surface',
+          isHome && !solid ? 'on-hero' : 'on-light',
           solid && 'is-solid',
         )}
       >

@@ -16,6 +16,7 @@ export function AddToCartButton({
   className,
   children,
   getQty,
+  tabIndex,
 }: {
   item: CartItemInput;
   label: string;
@@ -23,6 +24,8 @@ export function AddToCartButton({
   className?: string;
   children?: React.ReactNode;
   getQty?: () => number;
+  /** Lets an off-screen caller drop out of the tab order. */
+  tabIndex?: number;
 }) {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
@@ -36,7 +39,12 @@ export function AddToCartButton({
   };
 
   return (
-    <button type="button" onClick={onClick} className={clsx('btn btn-primary', className)}>
+    <button
+      type="button"
+      onClick={onClick}
+      tabIndex={tabIndex}
+      className={clsx('btn btn-primary', className)}
+    >
       {children}
       <span>{added ? addedLabel : label}</span>
     </button>

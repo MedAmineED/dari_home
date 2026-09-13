@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -12,7 +13,9 @@ import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Toggle } from '@/components/ui/toggle';
 import { strings } from '@/config/strings';
+import { assetUrl } from '@/lib/utils';
 import { getApiErrorMessage } from '@/lib/api/client';
+import { uploadCategoryImage } from '@/lib/api/categories';
 import type { Category } from '@/lib/api/catalog-types';
 import {
   useCreateCategory,
@@ -71,6 +74,30 @@ export function CategoryFormModal({
 
   const isActive = watch('isActive');
 
+  const [image, setImage] = useState<string | null>(category?.image ?? null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Keep the image preview in sync when the modal is reused for another row.
+  useEffect(() => {
+    setImage(category?.image ?? null);
+  }, [category, open]);
+
+  const onPickImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = ''; // allow re-selecting the same file
+    if (!file) return;
+    setUploading(true);
+    try {
+      const { url } = await uploadCategoryImage(file);
+      setImage(url);
+    } catch (error) {
+      toast.error(getApiErrorMessage(error));
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const onSubmit = async (values: FormValues) => {
     const payload = {
       nameAr: values.nameAr,
@@ -80,6 +107,7 @@ export function CategoryFormModal({
       isActive: values.isActive,
       descriptionAr: values.descriptionAr || undefined,
       descriptionFr: values.descriptionFr || undefined,
+      image: image ?? null,
     };
     try {
       if (category) {
@@ -154,6 +182,52 @@ export function CategoryFormModal({
           <div>
             <Label htmlFor="descriptionFr">{c.descFr}</Label>
             <Textarea id="descriptionFr" dir="ltr" rows={2} {...register('descriptionFr')} />
+          </div>
+        </div>
+
+        <div>
+          <Label>صورة الفئة</Label>
+          <div className="mt-1 flex items-center gap-4">
+            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-md border border-black/10 bg-black/5">
+              {image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={assetUrl(image) ?? ''}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-xs text-black/40">
+                  —
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col items-start gap-1.5">
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={onPickImage}
+              />
+              <Button
+                type="button"
+                variant="secondary"
+                isLoading={uploading}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                {image ? 'تغيير الصورة' : 'رفع صورة'}
+              </Button>
+              {image && (
+                <button
+                  type="button"
+                  onClick={() => setImage(null)}
+                  className="text-xs text-error hover:underline"
+                >
+                  إزالة الصورة
+                </button>
+              )}
+            </div>
           </div>
         </div>
 

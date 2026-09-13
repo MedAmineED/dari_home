@@ -149,8 +149,116 @@ async function seedCategories(): Promise<void> {
   console.log(`  ✓ ${categories.length} example categories`);
 }
 
+async function seedProducts(): Promise<void> {
+  const categories = await prisma.category.findMany();
+  const idBySlug = new Map(categories.map((c) => [c.slug, c.id]));
+
+  const products = [
+    {
+      slug: 'table-basse-olivier', category: 'mobilier',
+      nameAr: 'طاولة قهوة من خشب الزيتون', nameFr: 'Table basse en olivier',
+      shortDescriptionAr: 'طاولة قهوة مصنوعة يدويًا من خشب الزيتون التونسي.',
+      shortDescriptionFr: 'Table basse artisanale en olivier tunisien.',
+      descriptionAr: 'قطعة فريدة منحوتة يدويًا، تُبرز عروق خشب الزيتون الطبيعية.',
+      descriptionFr: "Pièce unique sculptée à la main, révélant les veines naturelles de l'olivier.",
+      sku: 'DH-MOB-001', price: 890, oldPrice: 1090, isFeatured: true,
+    },
+    {
+      slug: 'chaise-artisanale', category: 'mobilier',
+      nameAr: 'كرسي حرفي من الخشب', nameFr: 'Chaise artisanale en bois',
+      shortDescriptionAr: 'كرسي مريح بتصميم بسيط وأنيق.',
+      shortDescriptionFr: 'Chaise confortable au design épuré.',
+      descriptionAr: 'مصنوعة من خشب صلب مع تشطيب طبيعي يدوم طويلًا.',
+      descriptionFr: 'Fabriquée en bois massif avec une finition naturelle durable.',
+      sku: 'DH-MOB-002', price: 320, oldPrice: null, isFeatured: false,
+    },
+    {
+      slug: 'bureau-bois-massif', category: 'mobilier',
+      nameAr: 'مكتب من الخشب الصلب', nameFr: 'Bureau en bois massif',
+      shortDescriptionAr: 'مكتب واسع بأدراج عملية.',
+      shortDescriptionFr: 'Bureau spacieux avec tiroirs pratiques.',
+      descriptionAr: 'مساحة عمل أنيقة تجمع بين المتانة والجمال.',
+      descriptionFr: "Un espace de travail élégant alliant robustesse et beauté.",
+      sku: 'DH-MOB-003', price: 1250, oldPrice: null, isFeatured: true,
+    },
+    {
+      slug: 'miroir-mural-sculpte', category: 'decoration',
+      nameAr: 'مرآة حائط منحوتة', nameFr: 'Miroir mural sculpté',
+      shortDescriptionAr: 'مرآة بإطار خشبي منحوت يدويًا.',
+      shortDescriptionFr: 'Miroir au cadre en bois sculpté à la main.',
+      descriptionAr: 'تضيف لمسة دافئة وأصيلة إلى أي جدار.',
+      descriptionFr: "Apporte une touche chaleureuse et authentique à tout mur.",
+      sku: 'DH-DEC-001', price: 240, oldPrice: 300, isFeatured: false,
+    },
+    {
+      slug: 'vase-ceramique', category: 'decoration',
+      nameAr: 'مزهرية خزفية', nameFr: 'Vase en céramique',
+      shortDescriptionAr: 'مزهرية خزفية مصنوعة يدويًا بألوان ترابية.',
+      shortDescriptionFr: 'Vase en céramique fait main aux tons terreux.',
+      descriptionAr: 'تصميم عصري مستوحى من الحرف التونسية التقليدية.',
+      descriptionFr: "Design moderne inspiré de l'artisanat tunisien traditionnel.",
+      sku: 'DH-DEC-002', price: 85, oldPrice: null, isFeatured: false,
+    },
+    {
+      slug: 'lampe-table-tissee', category: 'luminaires',
+      nameAr: 'مصباح طاولة منسوج', nameFr: 'Lampe de table tissée',
+      shortDescriptionAr: 'مصباح بغطاء منسوج يدويًا.',
+      shortDescriptionFr: 'Lampe à abat-jour tissé main.',
+      descriptionAr: 'إضاءة دافئة تخلق أجواءً مريحة في المنزل.',
+      descriptionFr: "Une lumière chaude pour une ambiance cosy.",
+      sku: 'DH-LUM-001', price: 180, oldPrice: null, isFeatured: true,
+    },
+    {
+      slug: 'suspension-rotin', category: 'luminaires',
+      nameAr: 'ثريا من الروطان', nameFr: 'Suspension en rotin',
+      shortDescriptionAr: 'ثريا معلّقة من الروطان الطبيعي.',
+      shortDescriptionFr: 'Suspension en rotin naturel.',
+      descriptionAr: 'قطعة مميزة تضفي طابعًا بوهيميًا أنيقًا.',
+      descriptionFr: "Une pièce forte au style bohème chic.",
+      sku: 'DH-LUM-002', price: 350, oldPrice: 420, isFeatured: false,
+    },
+    {
+      slug: 'planche-decouper-olivier', category: 'cuisine',
+      nameAr: 'لوح تقطيع من الزيتون', nameFr: 'Planche à découper en olivier',
+      shortDescriptionAr: 'لوح تقطيع متين من خشب الزيتون.',
+      shortDescriptionFr: 'Planche à découper robuste en olivier.',
+      descriptionAr: 'مثالية للمطبخ، سهلة التنظيف وطويلة العمر.',
+      descriptionFr: "Idéale en cuisine, facile à entretenir et durable.",
+      sku: 'DH-CUI-001', price: 65, oldPrice: null, isFeatured: false,
+    },
+    {
+      slug: 'set-bols-bois', category: 'cuisine',
+      nameAr: 'طقم أوعية خشبية', nameFr: 'Set de bols en bois',
+      shortDescriptionAr: 'طقم من أربعة أوعية خشبية مصنوعة يدويًا.',
+      shortDescriptionFr: 'Set de quatre bols en bois faits main.',
+      descriptionAr: 'مناسبة للتقديم والاستعمال اليومي.',
+      descriptionFr: "Parfaits pour le service et l'usage quotidien.",
+      sku: 'DH-CUI-002', price: 120, oldPrice: 150, isFeatured: true,
+    },
+  ];
+
+  let count = 0;
+  for (const p of products) {
+    const categoryId = idBySlug.get(p.category) ?? null;
+    const data = {
+      nameAr: p.nameAr, nameFr: p.nameFr,
+      shortDescriptionAr: p.shortDescriptionAr, shortDescriptionFr: p.shortDescriptionFr,
+      descriptionAr: p.descriptionAr, descriptionFr: p.descriptionFr,
+      sku: p.sku, price: p.price, oldPrice: p.oldPrice,
+      status: 'ACTIVE' as const, isFeatured: p.isFeatured, categoryId,
+    };
+    await prisma.product.upsert({
+      where: { slug: p.slug },
+      update: data,
+      create: { slug: p.slug, ...data },
+    });
+    count += 1;
+  }
+  console.log(`  ✓ ${count} example products`);
+}
+
 async function main(): Promise<void> {
-  console.log('Seeding Darihome admin database...');
+  console.log('Seeding Darya admin database...');
   const permissionIds = await seedPermissions();
   const roleIds = await seedRoles(permissionIds);
   const superAdminRoleId = roleIds.get('SUPER_ADMIN');
@@ -159,6 +267,7 @@ async function main(): Promise<void> {
   }
   await seedSuperAdmin(superAdminRoleId);
   await seedCategories();
+  await seedProducts();
   console.log('Seed complete.');
 }
 

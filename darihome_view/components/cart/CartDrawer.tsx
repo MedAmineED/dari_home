@@ -9,6 +9,7 @@ import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { formatPrice } from '@/lib/format';
 import { clsx } from '@/lib/clsx';
 import { Icon } from '@/components/ui/Icon';
+import { FreeShippingBar } from './FreeShippingBar';
 import { useCart } from './CartProvider';
 
 export function CartDrawer({
@@ -144,6 +145,7 @@ export function CartDrawer({
             </ul>
 
             <div className="border-t hairline px-6 py-5 shrink-0">
+              <FreeShippingBar subtotal={subtotal} dict={dict} />
               <div className="flex items-center justify-between">
                 <span className="text-sm text-on-surface-variant">
                   {dict.cart.subtotal}

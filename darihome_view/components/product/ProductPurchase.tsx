@@ -21,7 +21,9 @@ export function ProductPurchase({
   const clamp = (v: number) => Math.max(1, Math.min(99, Number.isNaN(v) ? 1 : v));
 
   return (
-    <div className="mt-8">
+    // The sticky mobile buy bar observes this id and reveals itself once the
+    // box has scrolled above the viewport.
+    <div id="buy-box" className="mt-8">
       <h3 className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-3">
         {dict.product.quantity}
       </h3>

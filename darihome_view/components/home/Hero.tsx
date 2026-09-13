@@ -7,6 +7,14 @@ import type { CSSProperties } from 'react';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { Icon } from '@/components/ui/Icon';
 
+/**
+ * Full-bleed hero: the photograph fills the section edge to edge at full
+ * saturation, and the copy sits on a translucent card of the brand brown.
+ *
+ * Legibility is a property of the card, not of the picture — white type on
+ * an 80%-opaque brown panel holds the same contrast ratio wherever the card
+ * lands, so the image never has to be washed out to make the words readable.
+ */
 export function Hero({ dict }: { dict: Dictionary }) {
   const layer = useRef<HTMLDivElement>(null);
 
@@ -30,29 +38,30 @@ export function Hero({ dict }: { dict: Dictionary }) {
   }, []);
 
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+    <section className="hero-full">
       <div ref={layer} className="hero-media absolute inset-0 -z-10">
         <Image
-          src="/assets/images/stool-hero.jpg"
+          src="/assets/images/daria-gero.jpeg"
           alt=""
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/25 to-surface/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface/40 via-transparent to-transparent" />
       </div>
+      {/* Painted over the photo but under the copy. Outside the parallax
+          wrapper so it cannot drift away from the header as the page moves. */}
+      <div aria-hidden className="hero-topfade -z-10" />
 
       <div className="max-w-container mx-auto px-5 md:px-16 w-full">
-        <div className="max-w-2xl">
+        <div className="hero-card">
           <p
-            className="hero-fade text-xs font-semibold uppercase tracking-widest text-primary mb-5"
+            className="hero-fade text-xs font-semibold uppercase tracking-widest text-[#eddcc2] mb-4"
             style={{ '--fade-delay': '120ms' } as CSSProperties}
           >
             {dict.hero.eyebrow}
           </p>
-          <h1 className="font-display font-bold text-primary leading-[1.05] text-5xl sm:text-6xl md:text-7xl">
+          <h1 className="font-display font-bold text-white leading-[1.08] text-[2rem] sm:text-4xl lg:text-5xl">
             <span className="block overflow-hidden">
               <span className="hero-word" style={{ '--word-delay': '150ms' } as CSSProperties}>
                 {dict.hero.title1}
@@ -66,28 +75,38 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 {dict.hero.title3}
               </span>{' '}
               <span
-                className="hero-word text-on-surface"
+                className="hero-word"
                 style={{ '--word-delay': '480ms' } as CSSProperties}
               >
                 {dict.hero.title4}
               </span>
             </span>
           </h1>
+          <div
+            className="hero-paragraph flex flex-wrap items-center gap-3 mt-7"
+            style={{ '--fade-delay': '620ms' } as CSSProperties}
+          >
           <p
-            className="hero-fade text-lg text-on-surface-variant mt-6 max-w-lg leading-relaxed"
+            className="hero-text-papragraph hero-fade text-base md:text-lg text-white/90 mt-4 max-w-lg leading-relaxed"
             style={{ '--fade-delay': '640ms' } as CSSProperties}
           >
             {dict.hero.subtitle}
           </p>
+          </div>
           <div
-            className="hero-fade flex flex-wrap items-center gap-4 mt-9"
+            className="hero-fade flex flex-wrap items-center gap-3 mt-7"
             style={{ '--fade-delay': '780ms' } as CSSProperties}
           >
-            <Link href="/shop" className="btn btn-primary px-8 py-4 text-sm">
+            {/* On a brown card the brown button would vanish, so the primary
+                action inverts to ivory-on-brown — the strongest pairing here. */}
+            <Link
+              href="/shop"
+              className="btn bg-[#faf6f0] text-primary hover:bg-white px-7 py-3.5 text-sm"
+            >
               <span>{dict.hero.ctaPrimary}</span>
               <Icon name="arrow_forward" className="flip-rtl !text-[20px]" />
             </Link>
-            <Link href="/#story" className="btn btn-ghost px-8 py-4 text-sm text-primary">
+            <Link href="/#story" className="btn btn-ghost px-7 py-3.5 text-sm text-white">
               {dict.hero.ctaSecondary}
             </Link>
           </div>
@@ -96,7 +115,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
 
       <Link
         href="/#categories"
-        className="hero-fade absolute bottom-7 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-on-surface-variant"
+        className="hero-scroll hero-fade hidden md:flex flex-col items-center gap-2 text-white/85"
         style={{ '--fade-delay': '1000ms' } as CSSProperties}
       >
         <span className="text-[11px] uppercase tracking-widest">{dict.hero.scroll}</span>

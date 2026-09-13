@@ -24,8 +24,9 @@ export function CategoryGrid({
   locale: Locale;
   dict: Dictionary;
 }) {
-  const withProducts = categories.filter((c) => c.productCount > 0);
-  const shown = (withProducts.length > 0 ? withProducts : categories).slice(0, 4);
+  // Show every active category the admin has created — no cap, no product
+  // filter — so newly added categories appear on the storefront immediately.
+  const shown = categories;
   if (shown.length === 0) return null;
 
   return (

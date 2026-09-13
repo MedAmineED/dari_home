@@ -4,7 +4,7 @@
  * Kept in one place so a French locale can be layered on later.
  */
 export const strings = {
-  appName: 'داري هوم',
+  appName: 'داريا',
   appSubtitle: 'لوحة الإدارة',
   common: {
     loading: 'جارٍ التحميل...',
@@ -171,7 +171,7 @@ export const strings = {
   },
   dashboard: {
     title: 'لوحة التحكم',
-    welcome: 'مرحباً بك في لوحة إدارة داري هوم',
+    welcome: 'مرحباً بك في لوحة إدارة داريا',
     intro:
       'هذه هي مرحلة الأساس والمصادقة. سيتم تفعيل الوحدات التالية (المنتجات، الطلبات، العملاء) في المراحل القادمة.',
     yourRoles: 'أدوارك',
