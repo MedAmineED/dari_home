@@ -73,7 +73,7 @@ function productJsonLd(
     name,
     description,
     image: product.images.map((img) => img.url),
-    brand: { '@type': 'Brand', name: 'Darya' },
+    brand: { '@type': 'Brand', name: 'Darar' },
     offers: {
       '@type': 'Offer',
       price: product.price,

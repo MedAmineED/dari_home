@@ -162,9 +162,9 @@ const ar: Dictionary = {
   meta: {
     homeTitle: 'مصنوعة يدويًا من أجل بيتك',
     shopTitle: 'تسوّق كل القطع',
-    siteName: 'داريا',
+    siteName: 'دارار',
   },
-  brand: { name: 'داريا' },
+  brand: { name: 'دارار' },
   nav: {
     home: 'الرئيسية',
     shop: 'المتجر',
@@ -213,7 +213,7 @@ const ar: Dictionary = {
   story: {
     eyebrow: 'قصّتنا',
     title: 'الجمال في البساطة والصبر',
-    body: 'في داريا نؤمن بأن الأثاث يُصنع ليدوم. كل قطعة تُنحت من خشب عالي الجودة على يد حِرفيين، فتحمل دفء الصنعة اليدوية وسكينة العيش الهادئ.',
+    body: 'في دارار نؤمن بأن الأثاث يُصنع ليدوم. كل قطعة تُنحت من خشب عالي الجودة على يد حِرفيين، فتحمل دفء الصنعة اليدوية وسكينة العيش الهادئ.',
     stat1n: '100%',
     stat1l: 'خشب طبيعي',
     stat2n: '5 سنوات',
@@ -223,7 +223,7 @@ const ar: Dictionary = {
     cta: 'تعرّف علينا أكثر',
   },
   news: {
-    title: 'انضمّ إلى عائلة داريا',
+    title: 'انضمّ إلى عائلة دارار',
     subtitle: 'اشترك لتصلك أخبار القطع الجديدة وإلهام العيش الهادئ.',
     placeholder: 'بريدك الإلكتروني',
     button: 'اشترك',
@@ -242,7 +242,7 @@ const ar: Dictionary = {
     care: 'دليل العناية',
     getInTouch: 'تواصل معنا',
     stores: 'المتاجر',
-    rights: '© 2026 داريا. جميع الحقوق محفوظة.',
+    rights: '© 2026 دارار. جميع الحقوق محفوظة.',
   },
   shop: {
     title: 'تسوّق الكل',
@@ -331,9 +331,9 @@ const fr: Dictionary = {
   meta: {
     homeTitle: 'Fait main pour votre maison',
     shopTitle: 'Toute la collection',
-    siteName: 'Darya',
+    siteName: 'Darar',
   },
-  brand: { name: 'Darya' },
+  brand: { name: 'Darar' },
   nav: {
     home: 'Accueil',
     shop: 'Boutique',
@@ -382,7 +382,7 @@ const fr: Dictionary = {
   story: {
     eyebrow: 'Notre histoire',
     title: 'La beauté de la simplicité et de la patience',
-    body: 'Chez Darya, nous croyons au mobilier fait pour durer. Chaque pièce est taillée dans un bois de haute qualité par des artisans, portant la chaleur du travail manuel et la sérénité d’un quotidien apaisé.',
+    body: 'Chez Darar, nous croyons au mobilier fait pour durer. Chaque pièce est taillée dans un bois de haute qualité par des artisans, portant la chaleur du travail manuel et la sérénité d’un quotidien apaisé.',
     stat1n: '100 %',
     stat1l: 'Bois naturel',
     stat2n: '5 ans',
@@ -392,7 +392,7 @@ const fr: Dictionary = {
     cta: 'En savoir plus',
   },
   news: {
-    title: 'Rejoignez la famille Darya',
+    title: 'Rejoignez la famille Darar',
     subtitle:
       'Abonnez-vous pour découvrir les nouveautés et notre inspiration slow living.',
     placeholder: 'Votre adresse e-mail',
@@ -412,7 +412,7 @@ const fr: Dictionary = {
     care: 'Guide d’entretien',
     getInTouch: 'Nous contacter',
     stores: 'Boutiques',
-    rights: '© 2026 Darya. Tous droits réservés.',
+    rights: '© 2026 Darar. Tous droits réservés.',
   },
   shop: {
     title: 'Toute la boutique',
