@@ -266,8 +266,18 @@ async function main(): Promise<void> {
     throw new Error('SUPER_ADMIN role was not created');
   }
   await seedSuperAdmin(superAdminRoleId);
-  await seedCategories();
-  await seedProducts();
+
+  // Demo catalog (example categories + products) is dev-only. In prod set
+  // SEED_DEMO=false so restarts never recreate or revert catalog rows — the
+  // real catalog is managed entirely from the dashboard. Roles, permissions
+  // and the super-admin above always seed (they must stay in sync).
+  if (process.env.SEED_DEMO !== 'false') {
+    await seedCategories();
+    await seedProducts();
+  } else {
+    console.log('  ⤓ SEED_DEMO=false — skipping demo categories & products');
+  }
+
   console.log('Seed complete.');
 }
 

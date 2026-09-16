@@ -45,6 +45,8 @@ services:
       SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-ChangeMe123!}
       SEED_ADMIN_FIRST_NAME: ${SEED_ADMIN_FIRST_NAME:-Super}
       SEED_ADMIN_LAST_NAME: ${SEED_ADMIN_LAST_NAME:-Admin}
+      # Dev seeds demo catalog; prod .env sets SEED_DEMO=false.
+      SEED_DEMO: ${SEED_DEMO:-true}
     depends_on:
       mysql:
         condition: service_healthy
