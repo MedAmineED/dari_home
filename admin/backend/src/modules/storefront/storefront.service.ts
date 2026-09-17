@@ -10,6 +10,8 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { AuditService } from '../audit/audit.service';
 import { CategoriesRepository } from '../categories/categories.repository';
 import { ProductsRepository } from '../products/products.repository';
+import { SettingsService } from '../settings/settings.service';
+import { DeliverySettings, deliveryFeeFor } from '../settings/delivery-fee';
 import { OrdersService } from '../orders/orders.service';
 import { StorefrontCheckoutDto } from './dto/storefront-checkout.dto';
 import {
@@ -32,6 +34,8 @@ const NO_MATCH = '__no_match__';
 export interface StorefrontOrderConfirmation {
   orderNumber: string;
   status: OrderStatus;
+  subtotal: number;
+  shippingAmount: number;
   totalAmount: number;
   itemCount: number;
 }
@@ -44,7 +48,13 @@ export class StorefrontService {
     private readonly orders: OrdersService,
     private readonly prisma: PrismaService,
     private readonly audit: AuditService,
+    private readonly settings: SettingsService,
   ) {}
+
+  /** Public delivery pricing (flat fee + free-shipping threshold). */
+  getDelivery(): Promise<DeliverySettings> {
+    return this.settings.getDelivery();
+  }
 
   /** Active categories, ordered, for navigation and shop filters. */
   async getCategories(): Promise<PublicCategory[]> {
@@ -117,20 +127,36 @@ export class StorefrontService {
     const slugs = [...new Set(dto.items.map((i) => i.slug))];
     const products = await this.prisma.product.findMany({
       where: { slug: { in: slugs }, status: ProductStatus.ACTIVE },
-      select: { id: true, slug: true },
+      select: { id: true, slug: true, price: true },
     });
-    const idBySlug = new Map(products.map((p) => [p.slug, p.id]));
+    const bySlug = new Map(products.map((p) => [p.slug, p]));
 
     const items = dto.items.map((item) => {
-      const productId = idBySlug.get(item.slug);
-      if (!productId) {
+      const product = bySlug.get(item.slug);
+      if (!product) {
         throw new BadRequestException({
           message: `Product "${item.slug}" is unavailable`,
           code: 'PRODUCT_UNAVAILABLE',
         });
       }
-      return { productId, quantity: item.quantity };
+      return {
+        productId: product.id,
+        quantity: item.quantity,
+        price: Number(product.price),
+      };
     });
+
+    // Delivery is priced server-side from admin settings; the client never
+    // sends money. This subtotal mirrors what OrdersService recomputes, so
+    // the free-shipping decision uses authoritative DB prices.
+    const subtotal =
+      Math.round(
+        items.reduce((sum, i) => sum + i.price * i.quantity, 0) * 100,
+      ) / 100;
+    const shippingAmount = deliveryFeeFor(
+      subtotal,
+      await this.settings.getDelivery(),
+    );
 
     const order = await this.orders.create({
       customerName: dto.customerName,
@@ -141,7 +167,8 @@ export class StorefrontService {
       paymentMethod: 'cash_on_delivery',
       status: OrderStatus.PENDING,
       paymentStatus: PaymentStatus.PENDING,
-      items,
+      shippingAmount,
+      items: items.map(({ productId, quantity }) => ({ productId, quantity })),
     });
 
     await this.audit.record({
@@ -155,6 +182,8 @@ export class StorefrontService {
     return {
       orderNumber: order.orderNumber,
       status: order.status,
+      subtotal: order.subtotal,
+      shippingAmount: order.shippingAmount,
       totalAmount: order.totalAmount,
       itemCount: order.items.reduce((sum, item) => sum + item.quantity, 0),
     };

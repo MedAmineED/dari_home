@@ -2,8 +2,8 @@
 
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { formatPrice } from '@/lib/format';
-import { FREE_SHIPPING_THRESHOLD } from '@/lib/shipping';
 import { clsx } from '@/lib/clsx';
+import { useDelivery } from './DeliveryProvider';
 import { Icon } from '@/components/ui/Icon';
 
 /**
@@ -21,13 +21,14 @@ export function FreeShippingBar({
   subtotal: number;
   dict: Dictionary;
 }) {
-  if (FREE_SHIPPING_THRESHOLD <= 0) return null;
+  const { freeShippingThreshold } = useDelivery();
+  if (freeShippingThreshold <= 0) return null;
 
-  const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+  const remaining = Math.max(0, freeShippingThreshold - subtotal);
   const unlocked = remaining === 0;
   const percent = Math.min(
     100,
-    Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100),
+    Math.round((subtotal / freeShippingThreshold) * 100),
   );
 
   return (

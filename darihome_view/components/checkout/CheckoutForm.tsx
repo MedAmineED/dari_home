@@ -7,6 +7,8 @@ import { localize } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { formatPrice } from '@/lib/format';
 import { useCart } from '@/components/cart/CartProvider';
+import { useDelivery } from '@/components/cart/DeliveryProvider';
+import { deliveryFeeFor } from '@/lib/delivery';
 import { Icon } from '@/components/ui/Icon';
 import { submitOrder } from '@/lib/actions/checkout';
 
@@ -23,6 +25,9 @@ export function CheckoutForm({
   dict: Dictionary;
 }) {
   const { items, subtotal, clear } = useCart();
+  const delivery = useDelivery();
+  const shipping = deliveryFeeFor(subtotal, delivery);
+  const total = subtotal + shipping;
   const [pending, start] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<Success | null>(null);
@@ -188,11 +193,25 @@ export function CheckoutForm({
               </li>
             ))}
           </ul>
-          <div className="border-t hairline mt-4 pt-4 flex items-center justify-between">
-            <span className="font-medium">{dict.checkout.total}</span>
-            <span className="font-display text-xl font-semibold text-primary">
-              {formatPrice(subtotal, dict.common.currency)}
-            </span>
+          <div className="border-t hairline mt-4 pt-4 flex flex-col gap-2">
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-on-surface-variant">{dict.checkout.subtotal}</span>
+              <span>{formatPrice(subtotal, dict.common.currency)}</span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-on-surface-variant">{dict.checkout.delivery}</span>
+              <span>
+                {shipping === 0
+                  ? dict.checkout.deliveryFree
+                  : formatPrice(shipping, dict.common.currency)}
+              </span>
+            </div>
+            <div className="flex items-center justify-between pt-2 border-t hairline">
+              <span className="font-medium">{dict.checkout.total}</span>
+              <span className="font-display text-xl font-semibold text-primary">
+                {formatPrice(total, dict.common.currency)}
+              </span>
+            </div>
           </div>
           <p className="text-xs text-outline mt-2">{dict.checkout.codNote}</p>
 

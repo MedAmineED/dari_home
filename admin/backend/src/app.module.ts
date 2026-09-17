@@ -12,11 +12,13 @@ import { AuditModule } from './modules/audit/audit.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { CustomersModule } from './modules/customers/customers.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { PermissionsModule } from './modules/permissions/permissions.module';
 import { ProductsModule } from './modules/products/products.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { StorageModule } from './modules/storage/storage.module';
+import { SettingsModule } from './modules/settings/settings.module';
 import { StorefrontModule } from './modules/storefront/storefront.module';
 import { UsersModule } from './modules/users/users.module';
 
@@ -45,6 +47,8 @@ import { UsersModule } from './modules/users/users.module';
     ProductsModule,
     CustomersModule,
     OrdersModule,
+    DashboardModule,
+    SettingsModule,
     StorefrontModule,
   ],
   controllers: [AppController],

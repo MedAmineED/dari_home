@@ -5,6 +5,7 @@ import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { ProductSort, StorefrontCategory } from '@/lib/api/types';
 import { buildShopHref, type ShopParams } from '@/lib/shop';
 import { clsx } from '@/lib/clsx';
+import { ShopSearch } from './ShopSearch';
 
 /**
  * The filter controls (sort + categories), rendered server-side as plain links
@@ -33,6 +34,7 @@ export function FilterContent({
 
   return (
     <div className="flex flex-col gap-9">
+      <ShopSearch params={params} dict={dict} />
       <div>
         <h3 className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-4">
           {dict.shop.sortBy}

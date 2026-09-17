@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { CategoriesModule } from '../categories/categories.module';
 import { OrdersModule } from '../orders/orders.module';
 import { ProductsModule } from '../products/products.module';
+import { SettingsModule } from '../settings/settings.module';
 import { StorefrontController } from './storefront.controller';
 import { StorefrontService } from './storefront.service';
 
@@ -11,7 +12,7 @@ import { StorefrontService } from './storefront.service';
  * public-safe data plus a rate-limited cash-on-delivery checkout.
  */
 @Module({
-  imports: [ProductsModule, CategoriesModule, OrdersModule],
+  imports: [ProductsModule, CategoriesModule, OrdersModule, SettingsModule],
   controllers: [StorefrontController],
   providers: [StorefrontService],
 })

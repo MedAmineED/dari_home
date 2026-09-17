@@ -28,6 +28,11 @@ import { StorefrontService } from './storefront.service';
 export class StorefrontController {
   constructor(private readonly storefront: StorefrontService) {}
 
+  @Get('delivery')
+  getDelivery() {
+    return this.storefront.getDelivery();
+  }
+
   @Get('categories')
   getCategories() {
     return this.storefront.getCategories();

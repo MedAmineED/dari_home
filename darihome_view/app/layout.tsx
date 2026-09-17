@@ -2,9 +2,11 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Amiri, Tajawal } from 'next/font/google';
 import { getI18n } from '@/lib/i18n/server';
+import { getDeliverySettings } from '@/lib/api/delivery';
 import { dir } from '@/lib/i18n/config';
 import { clsx } from '@/lib/clsx';
 import { CartProvider } from '@/components/cart/CartProvider';
+import { DeliveryProvider } from '@/components/cart/DeliveryProvider';
 import { CartDrawer } from '@/components/cart/CartDrawer';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Header } from '@/components/layout/Header';
@@ -69,6 +71,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const { locale, dict } = await getI18n();
+  const delivery = await getDeliverySettings();
   return (
     <html
       lang={locale}
@@ -81,13 +84,15 @@ export default async function RootLayout({
       )}
     >
       <body className="font-body bg-surface text-on-surface">
-        <CartProvider>
-          <Header locale={locale} dict={dict} />
-          {children}
-          <Footer dict={dict} />
-          <CartDrawer locale={locale} dict={dict} />
-          <ScrollReveal />
-        </CartProvider>
+        <DeliveryProvider value={delivery}>
+          <CartProvider>
+            <Header locale={locale} dict={dict} />
+            {children}
+            <Footer dict={dict} />
+            <CartDrawer locale={locale} dict={dict} />
+            <ScrollReveal />
+          </CartProvider>
+        </DeliveryProvider>
       </body>
     </html>
   );

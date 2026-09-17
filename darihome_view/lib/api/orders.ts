@@ -18,6 +18,8 @@ export interface CheckoutPayload {
 export interface OrderConfirmation {
   orderNumber: string;
   status: string;
+  subtotal: number;
+  shippingAmount: number;
   totalAmount: number;
   itemCount: number;
 }

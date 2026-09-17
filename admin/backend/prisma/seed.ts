@@ -37,6 +37,7 @@ const ROLE_PERMISSIONS: Record<string, string[]> = {
     'customer:update',
     'customer:delete',
     'setting:read',
+    'setting:update',
     'dashboard:read',
     'audit:read',
   ],
@@ -257,6 +258,19 @@ async function seedProducts(): Promise<void> {
   console.log(`  ✓ ${count} example products`);
 }
 
+async function seedSettings(): Promise<void> {
+  // Create the delivery pricing row once; never overwrite admin-set values.
+  await prisma.setting.upsert({
+    where: { key: 'delivery' },
+    update: {},
+    create: {
+      key: 'delivery',
+      value: JSON.stringify({ fee: 0, freeShippingThreshold: 0 }),
+    },
+  });
+  console.log('  \u2713 settings');
+}
+
 async function main(): Promise<void> {
   console.log('Seeding Darya admin database...');
   const permissionIds = await seedPermissions();
@@ -266,6 +280,7 @@ async function main(): Promise<void> {
     throw new Error('SUPER_ADMIN role was not created');
   }
   await seedSuperAdmin(superAdminRoleId);
+  await seedSettings();
 
   // Demo catalog (example categories + products) is dev-only. In prod set
   // SEED_DEMO=false so restarts never recreate or revert catalog rows — the

@@ -11,6 +11,8 @@ import { clsx } from '@/lib/clsx';
 import { Icon } from '@/components/ui/Icon';
 import { FreeShippingBar } from './FreeShippingBar';
 import { useCart } from './CartProvider';
+import { useDelivery } from './DeliveryProvider';
+import { deliveryFeeFor } from '@/lib/delivery';
 
 export function CartDrawer({
   locale,
@@ -20,6 +22,9 @@ export function CartDrawer({
   dict: Dictionary;
 }) {
   const { items, subtotal, isOpen, close, setQty, remove } = useCart();
+  const delivery = useDelivery();
+  const shipping = deliveryFeeFor(subtotal, delivery);
+  const total = subtotal + shipping;
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -146,15 +151,24 @@ export function CartDrawer({
 
             <div className="border-t hairline px-6 py-5 shrink-0">
               <FreeShippingBar subtotal={subtotal} dict={dict} />
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-on-surface-variant">
-                  {dict.cart.subtotal}
-                </span>
-                <span className="font-display text-xl font-semibold text-primary">
-                  {formatPrice(subtotal, dict.common.currency)}
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-on-surface-variant">{dict.cart.subtotal}</span>
+                <span>{formatPrice(subtotal, dict.common.currency)}</span>
+              </div>
+              <div className="flex items-center justify-between text-sm mt-1.5">
+                <span className="text-on-surface-variant">{dict.cart.delivery}</span>
+                <span>
+                  {shipping === 0
+                    ? dict.cart.deliveryFree
+                    : formatPrice(shipping, dict.common.currency)}
                 </span>
               </div>
-              <p className="text-xs text-outline mt-1">{dict.cart.shippingNote}</p>
+              <div className="flex items-center justify-between mt-3 pt-3 border-t hairline">
+                <span className="font-medium">{dict.cart.total}</span>
+                <span className="font-display text-xl font-semibold text-primary">
+                  {formatPrice(total, dict.common.currency)}
+                </span>
+              </div>
               <Link
                 href="/checkout"
                 onClick={close}

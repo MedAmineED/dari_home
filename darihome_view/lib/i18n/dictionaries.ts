@@ -94,6 +94,8 @@ export interface Dictionary {
     prev: string;
     next: string;
     page: string;
+    search: string;
+    searchClear: string;
   };
   product: {
     quantity: string;
@@ -131,6 +133,9 @@ export interface Dictionary {
     /** Contains a {amount} placeholder. */
     freeShipRemaining: string;
     freeShipUnlocked: string;
+    delivery: string;
+    deliveryFree: string;
+    total: string;
   };
   checkout: {
     title: string;
@@ -143,7 +148,10 @@ export interface Dictionary {
     addressHint: string;
     notes: string;
     summary: string;
+    subtotal: string;
     total: string;
+    delivery: string;
+    deliveryFree: string;
     codNote: string;
     place: string;
     placing: string;
@@ -263,6 +271,8 @@ const ar: Dictionary = {
     prev: 'السابق',
     next: 'التالي',
     page: 'صفحة',
+    search: 'ابحث عن منتج…',
+    searchClear: 'مسح',
   },
   product: {
     quantity: 'الكمية',
@@ -300,6 +310,9 @@ const ar: Dictionary = {
     each: 'للقطعة',
     freeShipRemaining: 'أضف {amount} لتحصل على توصيل مجاني',
     freeShipUnlocked: 'رائع — التوصيل مجاني على طلبك',
+    delivery: 'التوصيل',
+    deliveryFree: 'مجاني',
+    total: 'الإجمالي',
   },
   checkout: {
     title: 'إتمام الطلب',
@@ -312,7 +325,10 @@ const ar: Dictionary = {
     addressHint: 'المدينة، الشارع، رقم المنزل…',
     notes: 'ملاحظات',
     summary: 'ملخّص الطلب',
+    subtotal: 'المجموع الفرعي',
     total: 'الإجمالي',
+    delivery: 'التوصيل',
+    deliveryFree: 'مجاني',
     codNote: 'الدفع عند الاستلام — تُحتسب مصاريف التوصيل عند التأكيد.',
     place: 'تأكيد الطلب',
     placing: 'جارٍ إرسال الطلب…',
@@ -433,6 +449,8 @@ const fr: Dictionary = {
     prev: 'Précédent',
     next: 'Suivant',
     page: 'Page',
+    search: 'Rechercher un produit…',
+    searchClear: 'Effacer',
   },
   product: {
     quantity: 'Quantité',
@@ -470,6 +488,9 @@ const fr: Dictionary = {
     each: 'l’unité',
     freeShipRemaining: 'Plus que {amount} pour la livraison offerte',
     freeShipUnlocked: 'Bravo — livraison offerte sur cette commande',
+    delivery: 'Livraison',
+    deliveryFree: 'Gratuite',
+    total: 'Total',
   },
   checkout: {
     title: 'Finaliser la commande',
@@ -482,7 +503,10 @@ const fr: Dictionary = {
     addressHint: 'Ville, rue, numéro…',
     notes: 'Remarques',
     summary: 'Récapitulatif',
+    subtotal: 'Sous-total',
     total: 'Total',
+    delivery: 'Livraison',
+    deliveryFree: 'Gratuite',
     codNote: 'Paiement à la livraison — les frais de livraison sont calculés à la confirmation.',
     place: 'Confirmer la commande',
     placing: 'Envoi de la commande…',

@@ -71,6 +71,5 @@ export const navItems: NavItem[] = [
     href: '/settings',
     icon: Settings,
     permission: 'setting:read',
-    soon: true,
   },
 ];
